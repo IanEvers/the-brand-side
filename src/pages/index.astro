@@ -1,81 +1,168 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import { useSanityClient, groq } from 'astro-sanity';
+import { urlForImage } from '../image'
+
+const gifs = [
+	"https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-a382b2ad-e17b-45c8-8ff2-e4273cd2e031.gif",
+	"https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-7638cc42-9c43-4483-817b-591e6be7870e.gif",
+	"https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-809bb394-811b-4cb8-a8a7-d85eecf0b8d4.gif",
+	"https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-e8344009-47f9-419b-841c-191ce38cd6f3.gif",
+	"https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-bbfd2c9b-9de2-4b35-bf84-3c6578472128.gif",
+	"https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-8047e327-9618-41de-9b82-0a1cb07b2472.gif"
+];
+
+
+async function getTrabajos() {
+  const query = groq`*[_type == "work"]`;
+  const posts = await useSanityClient().fetch(query);
+  return posts;
+}
+
+const trabajos = await getTrabajos()
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+
+		<div class="flex gap-12 items-center w-full relative">
+
+			<div class=" flex flex-col gap-0 pl-4"> 
+				<span class="text-3xl lg:text-9xl font-bold uppercase leading-6 lg:leading-[6rem]">the</span>
+				<span class="text-3xl lg:text-9xl font-bold uppercase leading-6 lg:leading-[6rem]">brand </span>
+				<span class="text-3xl lg:text-9xl font-bold uppercase leading-6 lg:leading-[6rem]">side</span>
+			</div>
+			<div class="ml-12 text-xs">
+				<p class="font-Georgia text-2xl max-w-xl">
+					<span class="font-bold">Everyone dreams of working with the best brands. We aim to build them.</span> The Brand Side is a brand agency based in Buenos Aires, Argentina with crewmates over Lima, Peru and Torino, Italy.
+				</p>
+				<div class="flex gap-12 mt-5 text-2xl font-Inter">
+					<div class="flex flex-col">
+						<span class="leading-[0.95] ">{new Date().getHours()}:{new Date().getMinutes()}</span>
+						<span class="leading-[0.95] ml-[2px] font-bold">BUENOS AIRES</span>
+					</div>
+					<div class="flex flex-col">
+						<span class="leading-[0.95] ">{new Date().getHours()}:{new Date().getMinutes()}</span>
+						<span class="leading-[0.95] ml-[2px] font-bold"> LIMA</span>
+					</div>
+					<div class="flex flex-col">
+						<span class="leading-[0.95] ">{new Date().getHours()}:{new Date().getMinutes()}</span>
+						<span class="leading-[0.95] ml-[2px] font-bold"> TORINO </span>
+					</div>
+				</div>
+			</div>
+			<div>
+				<nav class="text-6xl ">
+					<div class="hover:underline leading-[0.9]">Work</div>
+					<div class="hover:underline leading-[0.9]">About</div>
+					<div class="hover:underline leading-[0.9]">Sides</div>
+					<div class="hover:underline leading-[0.9]">Contact</div>
+				</nav>
+			</div>
+			<div>
+				<div class="flex items-end gap-3">
+					<div class=" bg-black w-4 h-4 rounded-full"></div>
+					<div class="text-2xl leading-[0.9] font-Inter">
+						<div class="uppercase "> español </div>
+						<div class="uppercase "> english </div>
+					</div>
+				</div>
+				<img src="/tvs.webp" alt="logo" class="w-24 m-auto pt-8">
+			</div>
+		</div>
+		<div class="flex justify-center">
+			<div class="flex justify-between w-[95vw]  mt-28 mb-4">
+				{
+					gifs.map(function (gif) {
+						return (
+							<div class="relative">
+								<div class="rounded-t-full w-full h-full bg-black absolute fondo-negro hover-black"></div>
+								<img src={gif} alt="" class="h-[55vh] w-[15vw] rounded-t-full">
+							</div>
+						)
+			
+					})
+				}
+			
+			</div>
+		</div>
+		<div class="ml-12 relative tracking-tighter mt-24">
+ 			<p class="text-[15vw] font-bold font-Inter  leading-none js-show-on-scroll"> 
+				<span>
+				This side up↑↑↑↑↑ ↑↑↑↑↑↑ 
+				</span>
+			</p>
+			<img class="absolute right-9 bottom-3 planta" src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-f18889c2-cd89-402d-9f2b-1d22d4e53a10.gif" >
+		</div>
+
+		<section class="mt-36">
+			<div class="m-auto flex justify-center">
+				<code class="text-lg uppercase text-center">featured work</code>	
+			</div>
+
+			{
+				trabajos.map((trabajo: any) => {
+					return (
+						<div class="flex gap-5 my-20 py-10 sticky top-20 bg-[white]">
+							<img src={urlForImage(trabajo.imagen).url()} class="w-[50vw] h-[500px] object-cover px-4 border-r-2 border-black" />
+							<div class="w-[22vw] px-4 border-r-2 border-black relative">
+								<img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/6392e79ac57b616d6ed0a92d/upload-419730d6-4ecc-4bcf-9466-c913b3bb5561.png" alt="flechita" class="absolute top-2 right-2 w-12">
+								<div class="absolute bottom-2 left-0">
+									<div class="uppercase font-Georgia"> {trabajo.rol} </div>
+									<div class="text-8xl  leading-[0.8]" > {trabajo.name} </div>
+								</div>
+							</div>
+							<div class="w-[22vw] relative">
+								<code class="absolute bottom-0">
+									{trabajo.descripcion}
+								</code>
+							</div>
+						</div>
+					)
+				})
+			}
+		</section>
+		
 	</main>
 </Layout>
 
+<script>
+
+const elementos = document.querySelectorAll('.hover-black')
+elementos.forEach((element) => {
+	element.addEventListener('mouseover', function() {
+		element.classList.add('animate-desaparecer')
+		setTimeout(() => element.classList.remove('animate-desaparecer'), 5000)
+	})
+});
+
+const callback = function(entries: any[]) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate-fadeIn");
+    } else {
+      entry.target.classList.remove("animate-fadeIn");
+    }
+  });
+};
+
+const targets = document.querySelectorAll(".js-show-on-scroll");
+
+const observer = new IntersectionObserver(callback);
+
+// Loop through each of the target
+targets.forEach(function(target) {
+  // Hide the element
+  target.classList.add("opacity-0");
+
+  // Add the element to the watcher
+  observer.observe(target);
+});
+
+
+</script>
+
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+	
+	
 </style>
