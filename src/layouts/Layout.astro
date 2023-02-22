@@ -4,6 +4,8 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-51334ea2-75aa-4180-814e-1ffe01716d5e.gif'
 ---
 
 <!DOCTYPE html>
@@ -15,18 +17,46 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-white w-full">
-		<div class="absolute top-0 w-full border-t-[1.5rem] border-black">
+	<body class="bg-white w-full overflow-x-hidden">
+		<div class="top-0 w-full border-t-[0.5rem] border-black sticky z-30">
 	</div>
 		
 		<slot />
     <div class="fixed left-10 bottom-5 flex gap-52 text-sm ">
-      
       <code>2023 THE "brand" SIDE</code>
       <code>BEHANCE</code>
       <code>LINKEDIN</code>
       <code>INSTAGRAM</code>
     </div>
+
+    <footer class=" bg-black ">
+      <div class="flex w-full gap-2 ">
+        <img src={batman} alt="batman" class="w-sm max-w-screen p-4">
+        <img src={batman} alt="batman" class="w-sm max-w-screen p-4 hidden lg:block">
+        <img src={batman} alt="batman" class="w-sm max-w-screen p-4  hidden xl:block">
+      </div>
+      <hr class="border-white  px-6 mx-6 mt-3">
+
+      <div class="flex gap-36 text-white p-6">
+        <div>
+          <p class="text-6xl ">What's your side?</p>
+          <p class="text-lg pt-12 max-w-md font-Georgia">he follies of others are obvious, but our own hide from us; we love to parse others missteps but we cover up our own, as the cheat conceals the false die. It is in the nature of men to lay blame: we see others mistakes while our own passions swell, carrying us ever farther from improvement. — Buddhist wisdo</p>
+          <p class="pt-12 text-lg">Or leave us a mail, instead</p>
+        </div>
+        <div class="flex flex-col  justify-center">
+          <input type="text" placeholder="Name" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem]" >
+          <input type="email" placeholder="Email" name="email" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem]" >
+          <input type="text" placeholder="Message" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem]" >
+          <button class="text-2xl text-left m-2 p-2 hover:underline">Send</button>
+        </div>
+        <div class="flex flex-col justify-center ">
+          <div class=" text-5xl font-Georgia hover:underline"> Behance</div>
+          <div class=" text-5xl font-Georgia hover:underline"> Linkedin</div>
+          <div class=" text-5xl font-Georgia hover:underline"> Instagram</div>
+          <div class=" text-5xl font-Georgia hover:underline"> Whatsapp</div>
+        </div>
+      </div>
+    </footer>
 	</body>
 </html>
 <style is:global>

@@ -10,7 +10,8 @@ module.exports = {
 			animation: {
         'desaparecer': 'desaparecer 5s linear ',
 				'fadeIn': "fadeIn 1s ease-in forwards",
-				'fadeOut': "fadeOut 1s ease-in forwards"
+				'fadeOut': "fadeOut 1s ease-in forwards",
+				'rotate': "rotate 8s ease-in-out infinite"
       },
 			keyframes: {
         desaparecer: {
@@ -24,6 +25,17 @@ module.exports = {
 				fadeOut: {
 					"0%": { opacity: 1 },
 					"100%": { opacity: 0 }
+				},
+				rotate: {
+					"0%": {
+						transform: 'rotate(0)'
+					},
+					"50%": {
+						transform: 'rotate(180deg)'
+					},
+					"100%": {
+						transform: 'rotate(0)'
+					}
 				}
       }
 		},
