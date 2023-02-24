@@ -1,5 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useSanityClient, groq } from 'astro-sanity';
+import { urlForImage } from '../image'
+
+async function getTrabajos() {
+  const query = groq`*[_type == "work"]`;
+  const posts = await useSanityClient().fetch(query);
+  return posts;
+}
+
+const trabajos = await getTrabajos()
+---
+<Layout title="The Brand Side - Work">
+
+  <div>
+
+    <div>
+
+    </div>
+    <div class="h-screen overflow-hidden bg-black">
+      <div class="grid grid-cols-2">
+        <img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/63a1272c1b895900208e62f6/upload-c2681d12-ff2b-4c99-b6be-58e6f81652f8.png" class="h-[50vh] w-[50vw] object-cover  animate-rotate-slow bg-white" alt="">
+        <img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/63a1272c1b895900208e62f6/upload-c2681d12-ff2b-4c99-b6be-58e6f81652f8.png" class="h-[50vh] w-[50vw] object-cover  animate-rotate-slow-backwards bg-white" alt="">
+        <img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/63a1272c1b895900208e62f6/upload-c2681d12-ff2b-4c99-b6be-58e6f81652f8.png" class="h-[50vh] w-[50vw] object-cover  animate-rotate-slow-backwards bg-white" alt="">
+        <img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/63a1272c1b895900208e62f6/upload-c2681d12-ff2b-4c99-b6be-58e6f81652f8.png" class="h-[50vh] w-[50vw] object-cover  animate-rotate-slow bg-white" alt="">
+      </div>
+      <span class="font-Georgia text-9xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white mix-blend-difference">Work </span>
+    </div>
 
 
-<div>
-  <img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/63a1272c1b895900208e62f6/upload-c2681d12-ff2b-4c99-b6be-58e6f81652f8.png" alt="">
-</div>
+  </div>
+</Layout>
