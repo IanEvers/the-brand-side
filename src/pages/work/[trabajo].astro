@@ -68,7 +68,45 @@ const trabajoMock = {
 
   <div class="pt-20">
     
-    <h1>{trabajo}</h1>
+    <div class="lg:flex">
+      <div class=" basis-2/3 p-2">
+        <img src={trabajoMock.imagen1_main} alt="" class="">
+      </div>
+      <div class=" basis-1/3 p-2 flex flex-col justify-between">
+        <div>
+          <h1 class="text-3xl">{trabajoMock.nombre}</h1>
+          <div class="flex mt-4">
+            <div>
+              <p class="font-bold uppercase">Client</p>
+              <p>{trabajoMock.client}</p>
+            </div>
+            <div>
+              <p class="font-bold uppercase">Year</p>
+              <p>{trabajoMock.year}</p>
+            </div>
+            <div>
+              <p class="font-bold uppercase"></p>
+              {
+                trabajoMock.sides.map((side) => {
+                  return (
+                    <p> {side} </p>
+                  )
+                })
+              }
+            </div>
+            <div>
+              <p class="font-bold uppercase">Industry</p>
+              <p>{trabajoMock.industry}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="">
+          <p>{trabajoMock.texto1}</p>
+          
+        </div>
+      </div>
+    </div>
     
   </div>
 </Layout>

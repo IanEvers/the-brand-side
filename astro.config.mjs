@@ -7,12 +7,16 @@ import tailwind from "@astrojs/tailwind";
 import sanity from "astro-sanity";
 
 // https://astro.build/config
+import vercel from "@astrojs/vercel/serverless";
+
+// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), sanity({
     projectId: 'ma1lfvs2',
     dataset: 'production',
     apiVersion: '2021-03-25',
-    useCdn: true,
+    useCdn: true
   })],
-  output: 'server'
+  output: 'server',
+  adapter: vercel()
 });
