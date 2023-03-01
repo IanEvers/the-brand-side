@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const sides = ["Branding", "Art Direction", "Illustration", "Visual Identity", "Motion Graphics", "3D", "Web Design", "Enviromental Design", "Editorial", "Naming", "Packaging", "Copywriting", "...You tell us."]
+
+---
+
+<Layout title="Sides - The Brand Side">
+
+  <div class="py-20 px-12 min-h-screen">
+    <div class="text-4xl game mt-6">our best sides</div>
+
+    <div class="lg:mt-32 mt-12">
+      {
+        sides.map((side, index) => {
+          return (
+            <span class="hidden md:inline md:text-6xl lg:text-8xl side hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </span>
+          )
+        })
+      }
+      {
+        sides.map((side, index) => {
+          return (
+            <div class="md:hidden text-5xl lg:text-8xl side-small hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </div>
+          )
+        })
+      }
+    </div>
+  </div>
+
+</Layout>
+
+<style>
+.side {
+  color: white;
+  text-shadow:
+   -2px -2px 0 #000,  
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+     2px 2px 0 #000;
+}
+
+.side-small {
+  color: white;
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+</style>

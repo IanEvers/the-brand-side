@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const { trabajo } = Astro.params;
+
+type Trabajo = {
+  imagen1_main: string,
+  nombre: string,
+  client: string,
+  year: string,
+  sides: string[],
+  industry: string,
+  texto1: string,
+  imagen2: string,
+  texto2: string,
+  texto2bis: string,
+  imagen3_grid: string,
+  imagen4_grid: string,
+  imagen5: string,
+  texto3: string,
+  imagen6_sidescroll: string,
+  imagen7_sidescroll: string,
+  imagen8_sidescroll: string,
+  texto4_title: string,
+  texto4: string,
+  imagen9: string,
+  texto5_big: string,
+  imagen10: string,
+  imagen11: string,
+  texto6_final: string,
+  texto6_datos: string
+}
+
+const imagen = "https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4097914/upload-1127f231-9c51-4bba-921b-0769ba1e08a9.png?e=webp&nll=true&cX=0&cY=272&cW=1330&cH=859"
+const texto = "The main logo features a Peruvian cockade (spanish: escarapela): a national icon deeply rooted in Peruvian popular culture that embodies the civic feeling of union and cooperation. In the context of RedPública, this element is referenced to talk about the union of ideas while generating a call to action."
+
+const trabajoMock = {
+  imagen1_main: imagen,
+  nombre: texto,
+  client: texto,
+  year: texto,
+  sides: ["lado", "lado","lado","lado","lado","lado"],
+  industry: texto,
+  texto1: texto,
+  imagen2: imagen,
+  texto2: texto,
+  texto2bis: texto,
+  imagen3_grid: imagen,
+  imagen4_grid: imagen,
+  imagen5: imagen,
+  texto3: texto,
+  imagen6_sidescroll: imagen,
+  imagen7_sidescroll: imagen,
+  imagen8_sidescroll: imagen,
+  texto4_title: texto,
+  texto4: texto,
+  imagen9: imagen,
+  texto5_big: texto,
+  imagen10: imagen,
+  imagen11: imagen,
+  texto6_final: texto,
+  texto6_datos: texto,
+}
+
+---
+
+<Layout title="Sides - The Brand Side">
+
+  <div class="pt-20">
+    
+    <h1>{trabajo}</h1>
+    
+  </div>
+</Layout>

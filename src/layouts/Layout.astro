@@ -19,27 +19,34 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
 	</head>
 	<body class="bg-white w-full overflow-x-hidden ">
 		<header class="top-0 w-full h-20  border-black fixed z-30 bg-black text-white flex justify-between items-center transition-all duration-300">
-      <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12">  the brand side </span>
-      <nav class="text-md flex gap-2 justify-center lg:gap-1  lg:flex-col mr-20 lg:mr-32">
+      <a href="/" class="hidden lg:block ">
+        <span class=" uppercase lg:text-7xl  xl:text-8xl font-bold leading-none ml-3 lg:ml-12"> the brand side </span>
+      </a>
+      <a href="/" class=" lg:hidden flex flex-col">
+        <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> the  </span>
+        <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> brand </span>
+        <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> side </span>
+      </a>
+      <nav class="text-md flex gap-2 justify-center px-3 sm:mr-20 lg:mr-32">
         <a href="/work-home" class="hover:underline leading-[0.9]">Work</a>
-        <a class="hover:underline leading-[0.9]">About</a>
-        <a class="hover:underline leading-[0.9]">Sides</a>
-        <a class="hover:underline leading-[0.9]">Contact</a>
+        <a href="/about" class="hover:underline leading-[0.9]">About</a>
+        <a class="hover:underline leading-[0.9]" href="/sides">Sides</a>
+        <a class="hover:underline leading-[0.9]" href="#contact">Contact</a>
       </nav>
-      <a href="/" class="w-10 lg:w-24 absolute right-4 top-2">
+      <a href="/" class="w-10 hidden sm:block lg:w-24 absolute right-4 top-2">
         <img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-cd7b5ba6-a308-4430-9ec9-2d0f16fe3d70.png?w=145&e=webp&nll=true" alt="" >
       </a>
 	  </header>
 		
 		<slot />
-    <div class="fixed left-10 bottom-5 gap-52 text-sm hidden xl:flex ">
-      <code>2023 THE "brand" SIDE</code>
-      <code>BEHANCE</code>
-      <code>LINKEDIN</code>
-      <code>INSTAGRAM</code>
+    <div class="fixed left-10 bottom-5 gap-40 text-[0.56rem] hidden xl:flex z-0 redes game">
+      <div class="shadow-texto">2023 THE "brand" SIDE</div>
+      <div class="shadow-texto">BEHANCE</div>
+      <div class="shadow-texto">LINKEDIN</div>
+      <div class="shadow-texto">INSTAGRAM</div>
     </div>
 
-    <footer class=" bg-black ">
+    <footer class=" bg-black  relative z-10">
       <div class="flex w-full gap-2 justify-center">
         <img src={batman} alt="batman" class="w-[23rem] max-w-screen p-4">
         <img src={batman} alt="batman" class="w-[23rem] max-w-screen p-4 hidden md:block">
@@ -54,7 +61,7 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
           <p class="text-lg pt-12 max-w-md font-Georgia">he follies of others are obvious, but our own hide from us; we love to parse others missteps but we cover up our own, as the cheat conceals the false die. It is in the nature of men to lay blame: we see others mistakes while our own passions swell, carrying us ever farther from improvement. — Buddhist wisdo</p>
           <p class="pt-12 text-lg">Or leave us a mail, instead</p>
         </div>
-        <div class="flex flex-col  justify-center">
+        <div class="flex flex-col  justify-center" id="contact">
           <input type="text" placeholder="Name" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
           <input type="email" placeholder="Email" name="email" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
           <input type="text" placeholder="Message" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
@@ -71,6 +78,8 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
 	</body>
 </html>
 <style is:global>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 	:root {
 		--accent: 124, 58, 237;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
@@ -78,6 +87,7 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
 	html {
 		font-family: system-ui, sans-serif;
 		background-color: #F6F6F6;
+    scroll-behavior: smooth;
 	}
 
 	html, body {
@@ -87,10 +97,29 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
         url(https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/upload-664d70d9-6d43-4539-912a-fd2862e97ab5.png) 2x
       ), auto;
 	}
-	code {
+
+  .cursor {
+    cursor: url(https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/upload-664d70d9-6d43-4539-912a-fd2862e97ab5.png), auto;
+		cursor: -webkit-image-set(
+        url(https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/upload-664d70d9-6d43-4539-912a-fd2862e97ab5.png?w=75) 1x,
+        url(https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/upload-664d70d9-6d43-4539-912a-fd2862e97ab5.png) 2x
+      ), auto;
+  }
+
+
+  .shadow-texto {
+    text-shadow: 2px 2px white;
+    color: black;
+  }
+
+  .game {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+  }
 
 	@font-face {
 		font-family: 'Georgia';
@@ -99,8 +128,9 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
 		font-style: normal;
 		font-display: swap;
 	}
+
 	
-	@font-face {
+@font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -156,24 +186,57 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-	
-
 </style>
 
 <script>
-console.log(window.location.pathname)
-if(window.location.pathname == "/") {
-  document.querySelector('header')?.classList.add('hidden');
+
+window.addEventListener("resize", () => {
+  if (window.screen.availWidth < 1026) {
+    document.querySelector('header')?.classList.remove('hidden');
+  }
+})
+
+
+if(window.location.pathname == "/" ) {
+  console.log(window.screen.availWidth)
+  if(window.screen.availWidth > 1026) {
+    document.querySelector('header')?.classList.add('hidden');
+  }
 
   window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
-    if (currentScroll > 400) {
+    if (currentScroll > 400 && window.screen.availWidth > 1023) {
       document.querySelector('header')?.classList.add('animate-fadeIn');
       document.querySelector('header')?.classList.remove('hidden');
-    } else {
+    } else if(window.screen.width > 1023) {
       document.querySelector('header')?.classList.remove('animate-fadeIn');
       document.querySelector('header')?.classList.add('hidden');
     }
   })
 }
+
+
+const callback = function(entries: any[]) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate-fadeIn");
+    } else {
+      entry.target.classList.remove("animate-fadeIn");
+    }
+  });
+};
+
+const targets = document.querySelectorAll(".js-show-on-scroll");
+
+const observer = new IntersectionObserver(callback);
+
+// Loop through each of the target
+targets.forEach(function(target) {
+  // Hide the element
+  target.classList.add("opacity-0");
+
+  // Add the element to the watcher
+  observer.observe(target);
+});
+
 </script>

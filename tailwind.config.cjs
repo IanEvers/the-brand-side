@@ -12,8 +12,7 @@ module.exports = {
 				'fadeIn': "fadeIn 1s ease-in forwards",
 				'fadeOut': "fadeOut 1s ease-in forwards",
 				'rotate': "rotate 8s ease-in-out infinite",
-				'rotate-slow': "rotate_slow 8s linear infinite",
-				'rotate-slow-backwards': "rotate_slow_backwards 8s linear infinite",
+				'rotate-slow': "rotate_slow 18s linear infinite",
       },
 			keyframes: {
         desaparecer: {
@@ -47,14 +46,7 @@ module.exports = {
 						transform: 'rotate(180deg)'
 					}
 				},
-				rotate_slow_backwards: {
-					"0%": {
-						transform: 'rotate(0)'
-					},
-					"100%": {
-						transform: 'rotate(-180deg)'
-					}
-				}
+			
       }
 		},
 	},
