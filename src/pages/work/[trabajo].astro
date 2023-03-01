@@ -36,11 +36,11 @@ const texto = "The main logo features a Peruvian cockade (spanish: escarapela): 
 
 const trabajoMock = {
   imagen1_main: imagen,
-  nombre: texto,
-  client: texto,
-  year: texto,
-  sides: ["lado", "lado","lado","lado","lado","lado"],
-  industry: texto,
+  nombre: "Redpublica",
+  client: "UNDP Peru",
+  year: "2021",
+  sides: ["branding", "art direction", "illustratoin"],
+  industry: "ACTIVISM AND POLITICS",
   texto1: texto,
   imagen2: imagen,
   texto2: texto,
@@ -48,6 +48,7 @@ const trabajoMock = {
   imagen3_grid: imagen,
   imagen4_grid: imagen,
   imagen5: imagen,
+  texto3_titulo: "Union and power",
   texto3: texto,
   imagen6_sidescroll: imagen,
   imagen7_sidescroll: imagen,
@@ -66,16 +67,16 @@ const trabajoMock = {
 
 <Layout title="Sides - The Brand Side">
 
-  <div class="pt-20">
+  <div class="pt-32 px-2 lg:px-6">
     
-    <div class="lg:flex">
-      <div class=" basis-2/3 p-2">
+    <div class="lg:flex gap-2 font-Inter">
+      <div class=" basis-2/3 pr-4 lg:border-r border-black">
         <img src={trabajoMock.imagen1_main} alt="" class="">
       </div>
-      <div class=" basis-1/3 p-2 flex flex-col justify-between">
+      <div class=" basis-1/3 p-2 flex flex-col justify-between ">
         <div>
-          <h1 class="text-3xl">{trabajoMock.nombre}</h1>
-          <div class="flex mt-4">
+          <h1 class="text-3xl lg:text-5xl">{trabajoMock.nombre}</h1>
+          <div class="flex gap-5 mt-4">
             <div>
               <p class="font-bold uppercase">Client</p>
               <p>{trabajoMock.client}</p>
@@ -85,11 +86,11 @@ const trabajoMock = {
               <p>{trabajoMock.year}</p>
             </div>
             <div>
-              <p class="font-bold uppercase"></p>
+              <p class="font-bold uppercase">Sides</p>
               {
                 trabajoMock.sides.map((side) => {
                   return (
-                    <p> {side} </p>
+                    <p class="uppercase"> {side} </p>
                   )
                 })
               }
@@ -101,12 +102,58 @@ const trabajoMock = {
           </div>
         </div>
 
-        <div class="">
-          <p>{trabajoMock.texto1}</p>
-          
+        <div class="mt-8">
+          <p >{trabajoMock.texto1}</p>
         </div>
       </div>
     </div>
+
+    <div class="my-6 px">
+      <img src={trabajoMock.imagen2} alt="" class="w-full object-cover max-h-[500px]">
+
+      <div class="lg:flex justify-center m-auto max-w-5xl my-12 font-Inter">
+        <div class="p-6 lg:border-r lg:border-l border-black">
+          <p class="font-bold text-xl lg:text-3xl ">{trabajoMock.texto2}</p>
+        </div>
+        <div>
+          <p class="px-6 ">{trabajoMock.texto2bis}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lg:flex gap-6 p-3 my-6 justify-center">
+      <img src={trabajoMock.imagen3_grid} alt="" class="lg:w-1/2 p-2">
+      <img src={trabajoMock.imagen4_grid} alt="" class="lg:w-1/2 p-2">
+    </div>
     
+    <div class="lg:flex mb-12 font-Inter">
+      <img src={trabajoMock.imagen5} alt="" class="w-3/4">
+      <div class="flex flex-col justify-end px-4">
+        <h2 class="font-bold text-lg">{trabajoMock.texto3_titulo}</h2>
+        <p class="text-sm">{trabajoMock.texto3}</p>
+      </div>
+    </div>
+
+
   </div>
 </Layout>
+
+<style>
+.horizontal-scroll-wrapper {
+  width: 100px;
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg);
+  transform-origin: right top;
+  transform:rotate(-90deg) translateY(-100px);
+}
+
+.horizontal-scroll-wrapper > div {
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+  transform-origin: right top;
+}
+</style>
