@@ -53,30 +53,43 @@ const trabajoMock = {
   imagen6_sidescroll: imagen,
   imagen7_sidescroll: imagen,
   imagen8_sidescroll: imagen,
-  texto4_title: texto,
+  texto4_title: "Union and power",
   texto4: texto,
+  texto4_bis: texto,
   imagen9: imagen,
-  texto5_big: texto,
+  texto5_big: "Most people are dismayed if deprived of their pleasures. The right course belongs to him who relishes even the passing away of the reason for his joy and is not bitter. — Pascal",
   imagen10: imagen,
   imagen11: imagen,
   texto6_final: texto,
-  texto6_datos: texto,
+  texto6_datos: `
+    Client: Lodetto
+    Owners: Agustin Lodetti / Nacho Lodetti
+
+    Production Company: Hueso
+
+    Director: Gianluca Fallone
+    Executive Producer: Santiago Moncalvo
+
+    Illustration: Nahuel Rollan
+    Graphic Design: Gianluca Fallone
+
+    Photography: Joaco Barcelonna / Alvaro P`,
 }
 
 ---
 
 <Layout title="Sides - The Brand Side">
 
-  <div class="pt-32 px-2 lg:px-6">
+  <div class="pt-32 px-2 lg:px-6 relative">
     
     <div class="lg:flex gap-2 font-Inter">
-      <div class=" basis-2/3 pr-4 lg:border-r border-black">
+      <div class=" basis-3/4 pr-4 lg:border-r border-black">
         <img src={trabajoMock.imagen1_main} alt="" class="">
       </div>
       <div class=" basis-1/3 p-2 flex flex-col justify-between ">
         <div>
           <h1 class="text-3xl lg:text-5xl">{trabajoMock.nombre}</h1>
-          <div class="flex gap-5 mt-4">
+          <div class="flex justify-between  mt-4">
             <div>
               <p class="font-bold uppercase">Client</p>
               <p>{trabajoMock.client}</p>
@@ -128,32 +141,90 @@ const trabajoMock = {
     </div>
     
     <div class="lg:flex mb-12 font-Inter">
-      <img src={trabajoMock.imagen5} alt="" class="w-3/4">
+      <img src={trabajoMock.imagen5} alt="" class="p-2 lg:w-3/4">
       <div class="flex flex-col justify-end px-4">
-        <h2 class="font-bold text-lg">{trabajoMock.texto3_titulo}</h2>
-        <p class="text-sm">{trabajoMock.texto3}</p>
+        <h2 class="font-bold text-lg lg:text-3xl mb-3">{trabajoMock.texto3_titulo}</h2>
+        <p class="text-sm lg:text-xl font-Georgia">{trabajoMock.texto3}</p>
       </div>
     </div>
 
+    <div class="flex overflow-auto gap-5 my-7">
+      <img src={trabajoMock.imagen6_sidescroll} alt="" class="w-full object-cover max-h-[500px]">
+      <img src={trabajoMock.imagen7_sidescroll} alt="" class="w-full object-cover max-h-[500px]">
+      <img src={trabajoMock.imagen8_sidescroll} alt="" class="w-full object-cover max-h-[500px]">
+    </div>
+
+    <div class="max-w-7xl lg:flex gap-5 font-Inter my-12">
+      <div class=" basis-1/4">
+        <p class="w-full font-bold text-3xl leading-tight">{trabajoMock.texto4_title}</p>
+      </div>
+      <div class="basis-1/3">
+        <p class=" leading-tight">{trabajoMock.texto4}</p>
+      </div>
+      <div class="basis-1/3">
+        <p class=" leading-tight">{trabajoMock.texto4_bis}</p>
+      </div>
+    </div>
+
+    <img src={trabajoMock.imagen9} alt="" class="w-full object-cover h-screen">
+
+    <div class="lg:flex gap-4 justify-end my-24">
+      <p class="text-2xl lg:text-4xl max-w-5xl xl:text-5xl 2xl:text-7xl font-medium p-3">{trabajoMock.texto5_big}</p>
+      <img src={trabajoMock.imagen10} alt="" class="max-w-full lg:max-w-xl self-end object-cover">
+    </div>
+
+    <img src={trabajoMock.imagen11} alt="" class="lg:w-2/3 max-h-[550px]  object-cover mt-24 mb-6">
+    <hr class="border-black lg:w-2/3 mt-12">
+
+    <div class="xl:flex max-w-5xl font-Inter gap-9 mt-6  mb-12">
+      <div class="basis-1/2 max-w-3xl">
+        <p class="font-bold text-xl  leading-none">{trabajoMock.texto6_final}</p>
+      </div>
+      <div class="basis-1/2 max-w-3xl mt-6 xl:mt-0">
+        <p class="font-extralight text-sm">{trabajoMock.texto6_datos}</p>
+      </div>
+     
+    </div>
+
+    <hr class="border-black lg:w-2/3 mb-12 my-20">
+
+    
+
+  </div>
+
+  <div class="bg-[#c5c5c5] p-8 pb-32">
+    <p class="font-bold uppercase  text-2xl text-[#282828] mb-6">
+      related projects
+    </p>
+
+    <div class="lg:flex gap-8 justify-between">
+      <div class="flex flex-col md:flex-row gap-4 basis-1/2">
+        <div>
+          <img src={imagen} alt="">
+          <p class="text-2xl mt-3 font-Georgia">Festival de Teatro Sala de parto 2021</p>
+        </div>
+        <div>
+          <img src={imagen} alt="">
+          <p class="text-2xl mt-3 font-Georgia">Festival de Teatro Sala de parto 2021</p>
+        </div>
+      </div>
+      <div class="self-center  flex-1 flex justify-between lg:block mt-12 lg:mt-0">
+        <p class="text-3xl xl:text-5xl 2xl:text-7xl text-center game">prev project</p>
+        <hr class="border-black my-4 ">
+        <p class="text-3xl xl:text-5xl 2xl:text-7xl text-center game">next project</p>
+      </div>
+
+    </div>
 
   </div>
 </Layout>
 
 <style>
-.horizontal-scroll-wrapper {
-  width: 100px;
-  height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transform: rotate(-90deg);
-  transform-origin: right top;
-  transform:rotate(-90deg) translateY(-100px);
-}
 
-.horizontal-scroll-wrapper > div {
-  width: 100px;
-  height: 100px;
-  transform: rotate(90deg);
-  transform-origin: right top;
-}
+
 </style>
+
+<script>
+
+
+</script>
