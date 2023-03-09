@@ -115,9 +115,8 @@ const lenguaje = Astro.url.searchParams.get('lang') || "es"
 
 		{
 			trabajos.map((trabajo: any, index: number) => {
-				console.log(trabajo)
 				return (
-					<div class="lg:flex gap-5 mt-10 mb-30 lg:py-10 md:sticky top-20 bg-[white]">
+					<a class="lg:flex gap-5 mt-10 mb-30 lg:py-10 md:sticky top-20 bg-[white]" href={"work/" + trabajo._id}>
 						<img src={urlForImage(trabajo.imagen1_main).url()} class="lg:w-[50vw] lg:h-[500px] object-cover lg:px-4 lg:border-r-2 border-black" />
 						<hr class="border border-black">
 						<div class="lg:w-[22vw] flex items-center mt-2 lg:mt-0 lg:block px-4 lg:border-r-2 border-black relative">
@@ -132,7 +131,7 @@ const lenguaje = Astro.url.searchParams.get('lang') || "es"
 								{trabajo.texto1[lenguaje]}
 							</code>
 						</div>
-					</div>
+					</a>
 				)
 			})
 		}
