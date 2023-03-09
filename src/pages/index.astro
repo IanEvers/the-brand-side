@@ -27,12 +27,15 @@ const cara = "/cara.webp"
 const cuerpo = "/cuerpo.webp"
 
 async function getTrabajos() {
-  const query = groq`*[_type == "work"]`;
+  const query = groq`* [_type == "work"]`;
   const posts = await useSanityClient().fetch(query);
   return posts;
 }
 
 const trabajos = await getTrabajos()
+
+const lenguaje = Astro.url.searchParams.get('lang') || "es"
+
 ---
 
 <Layout title="The Brand Side">
@@ -108,22 +111,25 @@ const trabajos = await getTrabajos()
 			<code class="text-xl uppercase text-center">featured work</code>
 		</div>
 
+		
+
 		{
-			trabajos.map((trabajo: any) => {
+			trabajos.map((trabajo: any, index: number) => {
+				console.log(trabajo)
 				return (
 					<div class="lg:flex gap-5 mt-10 mb-30 lg:py-10 md:sticky top-20 bg-[white]">
-						<img src={urlForImage(trabajo.imagen).url()} class="lg:w-[50vw] lg:h-[500px] object-cover lg:px-4 lg:border-r-2 border-black" />
+						<img src={urlForImage(trabajo.imagen1_main).url()} class="lg:w-[50vw] lg:h-[500px] object-cover lg:px-4 lg:border-r-2 border-black" />
 						<hr class="border border-black">
 						<div class="lg:w-[22vw] flex items-center mt-2 lg:mt-0 lg:block px-4 lg:border-r-2 border-black relative">
 							<div class="lg:absolute bottom-2 left-0 max-w-full">
-								<div class="uppercase font-Georgia"> {trabajo.rol} </div>
-								<div class="text-7xl leading-[0.8] break-words " > {trabajo.name} </div>
+								<div class="uppercase font-Georgia"> {trabajo.sides[0][lenguaje]} </div>
+								<div class="text-7xl leading-[0.8] break-words " > {trabajo.nombre[lenguaje]} </div>
 							</div>
 							<img src={flechaDiagonal} alt="flechita" class="hidden lg:block absolute top-2 right-2   w-12">
 						</div>
 						<div class="lg:w-[22vw] p-6 lg:p-0  max-w-3xl lg:max-w-none relative">
 							<code class="lg:absolute bottom-0 ">
-								{trabajo.descripcion}
+								{trabajo.texto1[lenguaje]}
 							</code>
 						</div>
 					</div>
@@ -203,4 +209,11 @@ elementos.forEach((element) => {
 	})
 });
 
+
+
 </script>
+
+<style>
+	
+
+	</style>

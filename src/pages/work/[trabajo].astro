@@ -1,80 +1,29 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { useSanityClient, groq } from 'astro-sanity';
+import { urlForImage } from '../../image'
 
 const { trabajo } = Astro.params;
 
-type Trabajo = {
-  imagen1_main: string,
-  nombre: string,
-  client: string,
-  year: string,
-  sides: string[],
-  industry: string,
-  texto1: string,
-  imagen2: string,
-  texto2: string,
-  texto2bis: string,
-  imagen3_grid: string,
-  imagen4_grid: string,
-  imagen5: string,
-  texto3: string,
-  imagen6_sidescroll: string,
-  imagen7_sidescroll: string,
-  imagen8_sidescroll: string,
-  texto4_title: string,
-  texto4: string,
-  imagen9: string,
-  texto5_big: string,
-  imagen10: string,
-  imagen11: string,
-  texto6_final: string,
-  texto6_datos: string
+const lastSlashIndex = Astro.url.pathname.lastIndexOf("/")
+const trabajoId = Astro.url.pathname.substr(lastSlashIndex + 1)
+
+async function getTrabajos() {
+  const query = groq`*[_type == "work"]`;
+  const posts = await useSanityClient().fetch(query);
+  const trabajoIndex = posts.findIndex((trabajo) => {
+    return trabajo._id == trabajoId;
+  });
+  return {trabajoMock: posts.find((trabajo) => trabajo._id == trabajoId), trabajos: posts, trabajoIndex};
 }
 
-const imagen = "https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4097914/upload-1127f231-9c51-4bba-921b-0769ba1e08a9.png?e=webp&nll=true&cX=0&cY=272&cW=1330&cH=859"
-const texto = "The main logo features a Peruvian cockade (spanish: escarapela): a national icon deeply rooted in Peruvian popular culture that embodies the civic feeling of union and cooperation. In the context of RedPública, this element is referenced to talk about the union of ideas while generating a call to action."
+const {trabajoMock, trabajos, trabajoIndex} = await getTrabajos()
 
-const trabajoMock = {
-  imagen1_main: imagen,
-  nombre: "Redpublica",
-  client: "UNDP Peru",
-  year: "2021",
-  sides: ["branding", "art direction", "illustratoin"],
-  industry: "ACTIVISM AND POLITICS",
-  texto1: texto,
-  imagen2: imagen,
-  texto2: texto,
-  texto2bis: texto,
-  imagen3_grid: imagen,
-  imagen4_grid: imagen,
-  imagen5: imagen,
-  texto3_titulo: "Union and power",
-  texto3: texto,
-  imagen6_sidescroll: imagen,
-  imagen7_sidescroll: imagen,
-  imagen8_sidescroll: imagen,
-  texto4_title: "Union and power",
-  texto4: texto,
-  texto4_bis: texto,
-  imagen9: imagen,
-  texto5_big: "Most people are dismayed if deprived of their pleasures. The right course belongs to him who relishes even the passing away of the reason for his joy and is not bitter. — Pascal",
-  imagen10: imagen,
-  imagen11: imagen,
-  texto6_final: texto,
-  texto6_datos: `
-    Client: Lodetto
-    Owners: Agustin Lodetti / Nacho Lodetti
+const trabajoPrevio = trabajos[trabajoIndex-1] ? trabajos[trabajoIndex-1] : null
+const trabajoSiguiente = trabajos[trabajoIndex+1] ? trabajos[trabajoIndex+1] : null
+          
+const lenguaje = Astro.url.searchParams.get('lang') || "es"
 
-    Production Company: Hueso
-
-    Director: Gianluca Fallone
-    Executive Producer: Santiago Moncalvo
-
-    Illustration: Nahuel Rollan
-    Graphic Design: Gianluca Fallone
-
-    Photography: Joaco Barcelonna / Alvaro P`,
-}
 
 ---
 
@@ -84,104 +33,104 @@ const trabajoMock = {
     
     <div class="lg:flex gap-2 font-Inter">
       <div class=" basis-3/4 pr-4 lg:border-r border-black">
-        <img src={trabajoMock.imagen1_main} alt="" class="">
+        <img src={urlForImage(trabajoMock.imagen1_main)} alt="" class="">
       </div>
       <div class=" basis-1/3 p-2 flex flex-col justify-between ">
         <div>
-          <h1 class="text-3xl lg:text-5xl">{trabajoMock.nombre}</h1>
+          <h1 class="text-3xl lg:text-5xl">{trabajoMock.nombre[lenguaje]}</h1>
           <div class="flex justify-between  mt-4">
             <div>
               <p class="font-bold uppercase">Client</p>
-              <p>{trabajoMock.client}</p>
+              <p>{trabajoMock.client[lenguaje]}</p>
             </div>
             <div>
               <p class="font-bold uppercase">Year</p>
-              <p>{trabajoMock.year}</p>
+              <p>{trabajoMock.year[lenguaje]}</p>
             </div>
             <div>
               <p class="font-bold uppercase">Sides</p>
               {
                 trabajoMock.sides.map((side) => {
                   return (
-                    <p class="uppercase"> {side} </p>
+                    <p class="uppercase"> {side[lenguaje]} </p>
                   )
                 })
               }
             </div>
             <div>
               <p class="font-bold uppercase">Industry</p>
-              <p>{trabajoMock.industry}</p>
+              <p>{trabajoMock.industry[lenguaje]}</p>
             </div>
           </div>
         </div>
 
         <div class="mt-8">
-          <p >{trabajoMock.texto1}</p>
+          <p >{trabajoMock.texto1[lenguaje]}</p>
         </div>
       </div>
     </div>
 
     <div class="my-6 px">
-      <img src={trabajoMock.imagen2} alt="" class="w-full object-cover max-h-[500px]">
+      <img src={urlForImage(trabajoMock.imagen2)} alt="" class="w-full object-cover max-h-[500px]">
 
       <div class="lg:flex justify-center m-auto max-w-5xl my-12 font-Inter">
         <div class="p-6 lg:border-r lg:border-l border-black">
-          <p class="font-bold text-xl lg:text-3xl ">{trabajoMock.texto2}</p>
+          <p class="font-bold text-xl lg:text-3xl ">{trabajoMock.texto2[lenguaje]}</p>
         </div>
         <div>
-          <p class="px-6 ">{trabajoMock.texto2bis}</p>
+          <p class="px-6 ">{trabajoMock.texto2bis[lenguaje]}</p>
         </div>
       </div>
 
     </div>
 
     <div class="lg:flex gap-6 p-3 my-6 justify-center">
-      <img src={trabajoMock.imagen3_grid} alt="" class="lg:w-1/2 p-2">
-      <img src={trabajoMock.imagen4_grid} alt="" class="lg:w-1/2 p-2">
+      <img src={urlForImage(trabajoMock.imagen3_grid)} alt="" class="lg:w-1/2 p-2">
+      <img src={urlForImage(trabajoMock.imagen4_grid)} alt="" class="lg:w-1/2 p-2">
     </div>
     
     <div class="lg:flex mb-12 font-Inter">
-      <img src={trabajoMock.imagen5} alt="" class="p-2 lg:w-3/4">
+      <img src={urlForImage(trabajoMock.imagen5)} alt="" class="p-2 lg:w-3/4">
       <div class="flex flex-col justify-end px-4">
-        <h2 class="font-bold text-lg lg:text-3xl mb-3">{trabajoMock.texto3_titulo}</h2>
-        <p class="text-sm lg:text-xl font-Georgia">{trabajoMock.texto3}</p>
+        <h2 class="font-bold text-lg lg:text-3xl mb-3">{trabajoMock.texto3_titulo[lenguaje]}</h2>
+        <p class="text-sm lg:text-xl font-Georgia">{trabajoMock.texto3[lenguaje]}</p>
       </div>
     </div>
 
     <div class="flex overflow-auto gap-5 my-7">
-      <img src={trabajoMock.imagen6_sidescroll} alt="" class="w-full object-cover max-h-[500px]">
-      <img src={trabajoMock.imagen7_sidescroll} alt="" class="w-full object-cover max-h-[500px]">
-      <img src={trabajoMock.imagen8_sidescroll} alt="" class="w-full object-cover max-h-[500px]">
+      <img src={urlForImage(trabajoMock.imagen6_sidescroll)} alt="" class="w-full object-cover max-h-[500px]">
+      <img src={urlForImage(trabajoMock.imagen7_sidescroll)} alt="" class="w-full object-cover max-h-[500px]">
+      <img src={urlForImage(trabajoMock.imagen8_sidescroll)} alt="" class="w-full object-cover max-h-[500px]">
     </div>
 
     <div class="max-w-7xl lg:flex gap-5 font-Inter my-12">
       <div class=" basis-1/4">
-        <p class="w-full font-bold text-3xl leading-tight">{trabajoMock.texto4_title}</p>
+        <p class="w-full font-bold text-3xl leading-tight">{trabajoMock.texto4_title[lenguaje]}</p>
       </div>
       <div class="basis-1/3">
-        <p class=" leading-tight">{trabajoMock.texto4}</p>
+        <p class=" leading-tight">{trabajoMock.texto4[lenguaje]}</p>
       </div>
       <div class="basis-1/3">
-        <p class=" leading-tight">{trabajoMock.texto4_bis}</p>
+        <p class=" leading-tight">{trabajoMock.texto4_bis[lenguaje]}</p>
       </div>
     </div>
 
-    <img src={trabajoMock.imagen9} alt="" class="w-full object-cover h-screen">
+    <img src={urlForImage(trabajoMock.imagen9)} alt="" class="w-full object-cover h-screen">
 
     <div class="lg:flex gap-4 justify-end my-24">
-      <p class="text-2xl lg:text-4xl max-w-5xl xl:text-5xl 2xl:text-7xl font-medium p-3">{trabajoMock.texto5_big}</p>
-      <img src={trabajoMock.imagen10} alt="" class="max-w-full lg:max-w-xl self-end object-cover">
+      <p class="text-2xl lg:text-4xl max-w-5xl xl:text-5xl 2xl:text-7xl font-medium p-3">{trabajoMock.texto5_big[lenguaje]}</p>
+      <img src={urlForImage(trabajoMock.imagen10)} alt="" class="max-w-full lg:max-w-xl self-end object-cover">
     </div>
 
-    <img src={trabajoMock.imagen11} alt="" class="lg:w-2/3 max-h-[550px]  object-cover mt-24 mb-6">
+    <img src={urlForImage(trabajoMock.imagen11)} alt="" class="lg:w-2/3 max-h-[550px]  object-cover mt-24 mb-6">
     <hr class="border-black lg:w-2/3 mt-12">
 
     <div class="xl:flex max-w-5xl font-Inter gap-9 mt-6  mb-12">
       <div class="basis-1/2 max-w-3xl">
-        <p class="font-bold text-xl  leading-none">{trabajoMock.texto6_final}</p>
+        <p class="font-bold text-xl  leading-none">{trabajoMock.texto6_final[lenguaje]}</p>
       </div>
       <div class="basis-1/2 max-w-3xl mt-6 xl:mt-0">
-        <p class="font-extralight text-sm">{trabajoMock.texto6_datos}</p>
+        <p class="font-extralight text-sm">{trabajoMock.texto6_datos[lenguaje]}</p>
       </div>
      
     </div>
@@ -199,19 +148,19 @@ const trabajoMock = {
 
     <div class="lg:flex gap-8 justify-between">
       <div class="flex flex-col md:flex-row gap-4 basis-1/2">
-        <div>
-          <img src={imagen} alt="">
-          <p class="text-2xl mt-3 font-Georgia">Festival de Teatro Sala de parto 2021</p>
+        <div class={( trabajoPrevio ? "block" : " hidden")}>
+          <img src={trabajoPrevio ? trabajoPrevio.imagen1_main : ''} alt="">
+          <p class="text-2xl mt-3 font-Georgia">{trabajoPrevio ? trabajoPrevio.nombre : ''}</p>
         </div>
-        <div>
-          <img src={imagen} alt="">
-          <p class="text-2xl mt-3 font-Georgia">Festival de Teatro Sala de parto 2021</p>
+        <div class={( trabajoSiguiente ? "block" : " hidden")}>
+          <img src={trabajoSiguiente ? trabajoSiguiente.imagen1_main : ''} alt="">
+          <p class="text-2xl mt-3 font-Georgia">{trabajoSiguiente ? trabajoSiguiente.nombre : ''}</p>
         </div>
       </div>
       <div class="self-center  flex-1 flex justify-between lg:block mt-12 lg:mt-0">
-        <p class="text-3xl xl:text-5xl 2xl:text-7xl text-center game">prev project</p>
+        <a href={"work/" + trabajoPrevio ? trabajoPrevio?._id : ''} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoPrevio ? " block" : " hidden")}>prev project</a>
         <hr class="border-black my-4 ">
-        <p class="text-3xl xl:text-5xl 2xl:text-7xl text-center game">next project</p>
+        <a href={"work/" + trabajoSiguiente ? trabajoSiguiente?._id : ''} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoSiguiente ? " block" : " hidden")}>next project</a>
       </div>
 
     </div>

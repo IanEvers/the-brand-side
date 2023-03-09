@@ -6,6 +6,7 @@ export interface Props {
 const { title } = Astro.props;
 
 const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-51334ea2-75aa-4180-814e-1ffe01716d5e.gif'
+const flechaArriba = "https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/6392e79ac57b616d6ed0a92d/upload-879569cb-e745-42c1-88ce-f326bbb8049f.png"
 ---
 
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
       </div>
       <hr class="border-white  px-6 mx-6 mt-3">
 
-      <div class="flex flex-col xl:flex-row gap-36 text-white p-6">
+      <div class="flex flex-col xl:flex-row gap-36 text-white p-6 items-center">
         <div>
           <p class="text-6xl ">What's your side?</p>
           <p class="text-lg pt-12 max-w-md font-Georgia">he follies of others are obvious, but our own hide from us; we love to parse others missteps but we cover up our own, as the cheat conceals the false die. It is in the nature of men to lay blame: we see others mistakes while our own passions swell, carrying us ever farther from improvement. — Buddhist wisdo</p>
@@ -72,6 +73,30 @@ const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4
           <div class=" text-5xl font-Georgia hover:underline"> Linkedin</div>
           <div class=" text-5xl font-Georgia hover:underline"> Instagram</div>
           <div class=" text-5xl font-Georgia hover:underline"> Whatsapp</div>
+        </div>
+      </div>
+
+      <div class="flex flex-col lg:flex-row justify-between  mt-12 items-center lg:items-end gap-12 lg:gap-32 text-white py-3 px-6">
+        <p class="text-3xl lg:text-4xl text-center"><span class="font-bold"> ©THE BRAND SIDE </span> - 2023</p>
+        <div class=" flex-col items-center hidden lg:flex">
+          <div class="flex">
+            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
+            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
+            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
+            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
+          </div>
+          <span class="font-Inter text-xl uppercase">this side up</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-cd7b5ba6-a308-4430-9ec9-2d0f16fe3d70.png?w=145&e=webp&nll=true" alt="logo" class="w-12 ">
+
+          <div class="font-Inter lg:pr-32">
+            <p> The Brand Side </p>
+            <p> Buenos Aires Office </p>
+            <p> Dorrego 1456 </p>
+          </div>
+
+
         </div>
       </div>
     </footer>

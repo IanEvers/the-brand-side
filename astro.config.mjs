@@ -10,13 +10,16 @@ import sanity from "astro-sanity";
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
+import svelte from "@astrojs/svelte";
+
+// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), sanity({
     projectId: 'ma1lfvs2',
     dataset: 'production',
     apiVersion: '2021-03-25',
     useCdn: true
-  })],
+  }), svelte()],
   output: 'server',
   adapter: vercel()
 });

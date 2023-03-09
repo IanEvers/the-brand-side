@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const sides = ["Branding", "Art Direction", "Illustration", "Visual Identity", "Motion Graphics", "3D", "Web Design", "Enviromental Design", "Editorial", "Naming", "Packaging", "Copywriting", "...You tell us."]
+const sides = ["Advertising", "Strategy", "Branding", "Art Direction", "Ufology", "Illustration", "Visual Identity", "Motion Graphics", "3D", "Web Design", "Enviromental Design", "Editorial", "Packaging", "...You tell us."]
 
 ---
 
@@ -13,16 +13,28 @@ const sides = ["Branding", "Art Direction", "Illustration", "Visual Identity", "
     <div class="lg:mt-32 mt-12">
       {
         sides.map((side, index) => {
-          return (
-            <span class="hidden md:inline md:text-6xl lg:text-8xl side hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </span>
-          )
+          if(side != "Ufology") {
+            return (
+              <span class="hidden md:inline md:text-6xl lg:text-8xl side hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </span>
+            )
+          } else {
+            return (
+              <a target="_blank" href="https://www.youtube.com/watch?v=auITEKd4sjA" class="hidden md:inline md:text-6xl lg:text-8xl side hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </a>
+            )
+          }
         })
       }
       {
         sides.map((side, index) => {
-          return (
-            <div class="md:hidden text-5xl lg:text-8xl side-small hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </div>
-          )
+          if(side != "Ufology") {
+            return (
+              <div class="md:hidden text-5xl lg:text-8xl side-small hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </div>
+            )
+          } else {
+            return (
+              <a target="_blank" href="https://www.youtube.com/watch?v=auITEKd4sjA" class="md:hidden text-5xl lg:text-8xl side-small hover:text-black font-bold"> {side}{(index + 1 != sides.length) && ","} </a>
+            )
+          } 
         })
       }
     </div>
