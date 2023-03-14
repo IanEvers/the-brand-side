@@ -13,6 +13,9 @@ import vercel from "@astrojs/vercel/serverless";
 import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
+import netlify from "@astrojs/netlify/functions";
+
+// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), sanity({
     projectId: 'ma1lfvs2',
@@ -21,5 +24,5 @@ export default defineConfig({
     useCdn: true
   }), svelte()],
   output: 'server',
-  adapter: vercel()
+  adapter: netlify()
 });
