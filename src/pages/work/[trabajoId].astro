@@ -3,18 +3,18 @@ import Layout from '../../layouts/Layout.astro';
 import { useSanityClient, groq } from 'astro-sanity';
 import { urlForImage } from '../../image'
 
-const { trabajo } = Astro.params;
-
-const lastSlashIndex = Astro.url.pathname.lastIndexOf("/")
-const trabajoId = Astro.url.pathname.substr(lastSlashIndex + 1)
+const { trabajoId } = Astro.params;
+console.log(Astro.params)
 
 async function getTrabajos() {
   const query = groq`*[_type == "work"]`;
+  console.log(Astro.params)
+
   const posts = await useSanityClient().fetch(query);
-  const trabajoIndex = posts.findIndex((trabajo) => {
+  const trabajoIndex = posts.findIndex((trabajo: any) => {
     return trabajo._id == trabajoId;
   });
-  return {trabajoMock: posts.find((trabajo) => trabajo._id == trabajoId), trabajos: posts, trabajoIndex};
+  return {trabajoMock: posts.find((trabajo: any) => trabajo._id == trabajoId), trabajos: posts, trabajoIndex};
 }
 
 const {trabajoMock, trabajos, trabajoIndex} = await getTrabajos()
@@ -25,6 +25,12 @@ const trabajoSiguiente = trabajos[trabajoIndex+1] ? trabajos[trabajoIndex+1] : n
 const lenguaje = Astro.url.searchParams.get('lang') || "es"
 
 
+// let lenguaje = 'es'
+
+function localePath(path: string) {
+	return path + '?lang=' + lenguaje
+} 
+
 ---
 
 <Layout title="Sides - The Brand Side">
@@ -32,9 +38,9 @@ const lenguaje = Astro.url.searchParams.get('lang') || "es"
   <div class="pt-32 px-2 lg:px-6 relative">
     
     <div class="lg:flex gap-2 font-Inter">
-      <div class=" basis-3/4 pr-4 lg:border-r border-black">
-        <img src={urlForImage(trabajoMock.imagen1_main)} alt="" class="">
-      </div>
+      <!-- <div class=" basis-3/4 pr-4 lg:border-r border-black">
+        <img src={urlForImage(trabajoMock.imagen1_main)} alt="" class="max-h-[80vh] object-cover w-full">
+      </div> -->
       <div class=" basis-1/3 p-2 flex flex-col justify-between ">
         <div>
           <h1 class="text-3xl lg:text-5xl">{trabajoMock.nombre[lenguaje]}</h1>
@@ -45,12 +51,12 @@ const lenguaje = Astro.url.searchParams.get('lang') || "es"
             </div>
             <div>
               <p class="font-bold uppercase">Year</p>
-              <p>{trabajoMock.year[lenguaje]}</p>
+              <p>{trabajoMock.year}</p>
             </div>
             <div>
               <p class="font-bold uppercase">Sides</p>
               {
-                trabajoMock.sides.map((side) => {
+                trabajoMock.sides.map((side: any) => {
                   return (
                     <p class="uppercase"> {side[lenguaje]} </p>
                   )
@@ -158,9 +164,9 @@ const lenguaje = Astro.url.searchParams.get('lang') || "es"
         </div>
       </div>
       <div class="self-center  flex-1 flex justify-between lg:block mt-12 lg:mt-0">
-        <a href={"work/" + trabajoPrevio ? trabajoPrevio?._id : ''} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoPrevio ? " block" : " hidden")}>prev project</a>
+        <a href={localePath("work/" + trabajoPrevio ? trabajoPrevio?._id : '')} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoPrevio ? " block" : " hidden")}>prev project</a>
         <hr class="border-black my-4 ">
-        <a href={"work/" + trabajoSiguiente ? trabajoSiguiente?._id : ''} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoSiguiente ? " block" : " hidden")}>next project</a>
+        <a href={localePath("work/" + trabajoSiguiente ? trabajoSiguiente?._id : '')} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoSiguiente ? " block" : " hidden")}>next project</a>
       </div>
 
     </div>

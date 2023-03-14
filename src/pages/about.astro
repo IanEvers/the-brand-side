@@ -14,7 +14,6 @@ async function getEquipo() {
 }
 
 const equipo = await getEquipo()
-console.log(equipo)
 
 async function getAbout() {
   const query = groq`* [_type == "about"]`;
@@ -27,7 +26,9 @@ const about = await getAbout()
 
 const lenguaje = Astro.url.searchParams.get('lang') || "es"
 
-
+function localePath(path: string) {
+	return path + '?lang=' + lenguaje
+}
 
 ---
 
@@ -40,7 +41,7 @@ const lenguaje = Astro.url.searchParams.get('lang') || "es"
     </div>
     
     <div class=" fixed top-24 left-6 z-20 ">
-      <a href="/">
+      <a href={localePath("/")}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-12 h-12 p-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
         </svg>

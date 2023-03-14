@@ -1,12 +1,30 @@
 ---
+import { useSanityClient, groq } from 'astro-sanity';
+
 export interface Props {
 	title: string;
 }
 
+import { PortableText } from "astro-portabletext";
+import { Block } from "astro-portabletext/components";
 const { title } = Astro.props;
+
+async function getFooter() {
+  const query = groq`* [_type == "footer"]`;
+  const footer = await useSanityClient().fetch(query);
+  return footer[0];
+}
+
+const footer = await getFooter()
 
 const batman = 'https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-51334ea2-75aa-4180-814e-1ffe01716d5e.gif'
 const flechaArriba = "https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/6392e79ac57b616d6ed0a92d/upload-879569cb-e745-42c1-88ce-f326bbb8049f.png"
+
+const lenguaje = Astro.url.searchParams.get('lang') || "es"
+
+function localePath(path: string) {
+	return path + '?lang=' + lenguaje
+}
 ---
 
 <!DOCTYPE html>
@@ -20,21 +38,21 @@ const flechaArriba = "https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178
 	</head>
 	<body class="bg-white w-full overflow-x-hidden ">
 		<header class="top-0 w-full h-20  border-black fixed z-30 bg-black text-white flex justify-between items-center transition-all duration-300">
-      <a href="/" class="hidden lg:block ">
-        <span class=" uppercase lg:text-7xl  xl:text-8xl font-bold leading-none ml-3 lg:ml-12"> the brand side </span>
+      <a href={localePath("/")} class="hidden lg:block -mt-16">
+        <span class=" uppercase lg:text-7xl  xl:text-8xl font-bold leading-none ml-3 lg:ml-12 "> the brand side </span>
       </a>
-      <a href="/" class=" lg:hidden flex flex-col">
+      <a href={localePath("/")} class=" lg:hidden flex flex-col">
         <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> the  </span>
         <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> brand </span>
         <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> side </span>
       </a>
-      <nav class="text-md flex gap-2 justify-center px-3 sm:mr-20 lg:mr-32">
-        <a href="/work-home" class="hover:underline leading-[0.9]">Work</a>
-        <a href="/about" class="hover:underline leading-[0.9]">About</a>
-        <a class="hover:underline leading-[0.9]" href="/sides">Sides</a>
+      <nav class="text-md flex lg:flex-col gap-2 lg:gap-0.5 justify-center px-3 sm:mr-20 lg:mr-32">
+        <a href={localePath("/work-home")} class="hover:underline leading-[0.9]">Work</a>
+        <a href={localePath("/about")} class="hover:underline leading-[0.9]">About</a>
+        <a class="hover:underline leading-[0.9]" href={localePath("/sides")}>Sides</a>
         <a class="hover:underline leading-[0.9]" href="#contact">Contact</a>
       </nav>
-      <a href="/" class="w-10 hidden sm:block lg:w-24 absolute right-4 top-2">
+      <a href={localePath("/work-home")} class="w-10 hidden sm:block lg:w-24 absolute right-4 top-2">
         <img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-cd7b5ba6-a308-4430-9ec9-2d0f16fe3d70.png?w=145&e=webp&nll=true" alt="" >
       </a>
 	  </header>
@@ -58,9 +76,17 @@ const flechaArriba = "https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178
 
       <div class="flex flex-col xl:flex-row gap-36 text-white p-6 items-center">
         <div>
-          <p class="text-6xl ">What's your side?</p>
-          <p class="text-lg pt-12 max-w-md font-Georgia">he follies of others are obvious, but our own hide from us; we love to parse others missteps but we cover up our own, as the cheat conceals the false die. It is in the nature of men to lay blame: we see others mistakes while our own passions swell, carrying us ever farther from improvement. — Buddhist wisdo</p>
-          <p class="pt-12 text-lg">Or leave us a mail, instead</p>
+          <p class="text-6xl ">{footer.titulo[lenguaje]}</p>
+          <div class="text-lg pt-12 max-w-md font-Georgia">
+
+            <PortableText
+              value={footer.texto_largo[lenguaje]}
+            >
+
+            </PortableText>
+            
+          </div>
+          
         </div>
         <div class="flex flex-col  justify-center" id="contact">
           <input type="text" placeholder="Name" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
@@ -69,10 +95,10 @@ const flechaArriba = "https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178
           <button class="text-2xl text-left m-2 p-2 hover:underline">Send</button>
         </div>
         <div class="flex flex-col justify-center ">
-          <div class=" text-5xl font-Georgia hover:underline"> Behance</div>
-          <div class=" text-5xl font-Georgia hover:underline"> Linkedin</div>
-          <div class=" text-5xl font-Georgia hover:underline"> Instagram</div>
-          <div class=" text-5xl font-Georgia hover:underline"> Whatsapp</div>
+          <a target="_blank" href={footer.behance} class=" text-5xl font-Georgia hover:underline"> Behance</a>
+          <a target="_blank" href={footer.linkedin} class=" text-5xl font-Georgia hover:underline"> Linkedin</a>
+          <a target="_blank" href={footer.instagram} class=" text-5xl font-Georgia hover:underline"> Instagram</a>
+          <a target="_blank" href={footer.whatsapp} class=" text-5xl font-Georgia hover:underline"> Whatsapp</a>
         </div>
       </div>
 
