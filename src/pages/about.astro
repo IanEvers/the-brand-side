@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { useSanityClient, groq } from 'astro-sanity';
 import { urlForImage } from '../image'
+import { PortableText } from 'astro-portabletext';
 
 const linkedin = "https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4083208/upload-efbae997-d35c-4f0b-80de-77353dc3e774.png?w=67&e=webp&nll=true"
 const instagram = "https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/639c12e47a2307001b707fda/upload-d5e8b818-8019-490f-ba5f-aba8148be080.png"
@@ -59,14 +60,15 @@ function localePath(path: string) {
         <div class=" flex-1 p-3 relative ">
           <div class="lg:absolute bottom-2 max-w-full">
             <p class="2xl:text-8xl xl:text-7xl lg:text-6xl text-xl text-gray-800 px-1 lg:px-6 font-medium opacity-60">
-              The best brands: we build them up from scratch.
+              {about.slogan[lenguaje]}
             </p>
           </div>
         </div>
         <div class="flex-1 p-3 relative">
-          <div class="lg:absolute bottom-2 game text-[0.6rem] xl:text-[0.8rem] px-2 max-w-3xl">
-            <p>estás estudiando y vos y tus compañeros sueñan con trabajar para Burger King, Netflix o Nike. Hacer campañas enormes y pensar ideas ganadoras de premios para estas grandes marcas. Después de muchos años trabajando para esas marcas nos dimos cuenta que el verdadero desafío está en otro lado. Queremos crear la próxima gran marca. Para eso sabemos que hay que trabajar fuerte en distintos lados de la comunicación. </p>
-            <p>Estrategia, diseño, planificación, creatividad, producción, cada lado es importante por sí sólo, pero cuando se juntan forman algo imparable y son capaces de construir una gran marca y finalmente lograr lo que todos desean, posicionarse en la cabeza de la gente</p>
+          <div class="lg:absolute bottom-2 game text-[0.6rem] xl:text-[0.8rem] px-2 max-w-3xl prose text-black">
+            <PortableText
+              value={about.texto_largo[lenguaje]}
+            ></PortableText>
           </div>
         </div>
       </div>
@@ -126,9 +128,25 @@ function localePath(path: string) {
                       {miembro.rol[lenguaje]}
                     </span>
                     
-                    <p class="text-lg font-Georgia mt-12">
-                      {miembro.descripcion_largo[lenguaje]}
-                    </p>
+                    <div class="text-lg font-Georgia mt-12">
+                      <PortableText value={miembro.descripcion_largo[lenguaje]}>
+                        
+                      </PortableText>
+                      
+                    </div>
+                    
+                    <div class="mt-6 flex gap-2">
+                      <a href={miembro.instagram} class={(miembro.instagram ? ' block' : ' hidden')} >
+                        <img src={instagram} alt="" class="w-8" >
+                      </a>
+                      <a href={miembro.linkedin} class={(miembro.linkedin ? ' block' : ' hidden')} >
+                        <img src={linkedin} alt="" class="w-8" >
+                      </a>
+                      <a href={miembro.behance} class={(miembro.behance ? ' block' : ' hidden')} >
+                        <img src={behance} alt="" class="w-8" >
+                      </a>
+                    </div>
+                    
                     
                   </div>
                 </div>
