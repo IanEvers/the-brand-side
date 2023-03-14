@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useSanityClient, groq } from 'astro-sanity';
+import { urlForImage } from '../image'
+
+async function getTrabajos() {
+  const query = groq`*[_type == "work"]`;
+  const posts = await useSanityClient().fetch(query);
+  return posts;
+}
+
+const trabajos = await getTrabajos()
+const lenguaje = Astro.url.searchParams.get('lang') || "es"
+
+function localePath(path: string) {
+	return path + '?lang=' + lenguaje
+}
+
+
+---
+<Layout title="The Brand Side - Work">
+
+  <div>
+
+    <div class="h-screen overflow-hidden bg-white">
+      <img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/63a1272c1b895900208e62f6/upload-c2681d12-ff2b-4c99-b6be-58e6f81652f8.png" class="h-[500vh] w-[500vw]  -mt-[200vh]     object-cover   lg:animate-rotate-slow bg-white" alt="">
+        
+      <span class="font-Georgia text-9xl lg:text-[15rem] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-texto  ">Work </span>
+    </div>
+
+    <section class="my-12 w-full">
+      <div class="max-w-[95%] lg:max-w-[98%] m-auto lg:grid grid-cols-2 w-full">
+        {
+          trabajos.map((trabajo: any, index: number) => {
+            return (
+              <a class={"p-4 mt-2 cursor " + ((index + 1) % 3 == 0 ? ' col-span-2 ' : ' col-span-1 ')} href={localePath("/work/" + trabajo._id)}>
+                <img src={urlForImage(trabajo.imagen1_main).url()} class="w-full object-cover max-h-[600px]" />
+								<div class="text-5xl font-Georgia mt-5  leading-10" > {trabajo.nombre[lenguaje]} </div>
+								<div class="uppercase ml-[2px] mt-[10px] text-gray-700 font-Inter"> {trabajo.sides[0][lenguaje]} </div>
+              </a>
+            )
+          })
+        }
+      </div>
+    </section>
+
+  </div>
+</Layout>
