@@ -69,15 +69,16 @@ function localePath(path: string) {
 				</div>
 				<div class="gap-12 mt-5 text-2xl font-Inter hidden xl:flex">
 					<div class="flex flex-col">
-						<span class="leading-[0.95] ">{new Date().getHours()}:{new Date().getMinutes()}</span>
+						
+						<span class="leading-[0.95] ">{new Date().toLocaleTimeString('en-US', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false, hour: '2-digit', minute:'2-digit' })}</span>
 						<span class="leading-[0.95] ml-[2px] font-bold">BUENOS AIRES</span>
 					</div>
 					<div class="flex flex-col">
-						<span class="leading-[0.95] ">{new Date().getHours()}:{new Date().getMinutes()}</span>
+						<span class="leading-[0.95] ">{new Date().toLocaleTimeString('en-US', { timeZone: 'America/Lima', hour12: false, hour: '2-digit', minute:'2-digit' })}</span>
 						<span class="leading-[0.95] ml-[2px] font-bold"> LIMA</span>
 					</div>
 					<div class="flex flex-col">
-						<span class="leading-[0.95] ">{new Date().getHours()}:{new Date().getMinutes()}</span>
+						<span class="leading-[0.95] ">{new Date().toLocaleTimeString('en-US', { timeZone: 'Europe/Rome', hour12: false, hour: '2-digit', minute:'2-digit' })}</span>
 						<span class="leading-[0.95] ml-[2px] font-bold"> TORINO </span>
 					</div>
 				</div>
