@@ -37,15 +37,21 @@ function localePath(path: string) {
 	</head>
 	<body class="bg-white w-full overflow-x-hidden ">
 		<header class="top-0 w-full h-20  border-black fixed z-30 bg-black text-white flex justify-between items-center transition-all duration-300">
-      <a href={localePath("/")} class="hidden lg:block -mt-16">
+      <a href={localePath("/")} class="hidden lg:flex  ">
         <span class=" uppercase lg:text-7xl  xl:text-8xl font-bold leading-none ml-3 lg:ml-12 "> the brand side </span>
+        <nav class="text-md hidden lg:flex lg:flex-col gap-2 lg:gap-0.5 justify-center px-3 sm:mr-20 lg:mr-32">
+          <a href={localePath("/work-home")} class="hover:underline leading-[0.9]">Work</a>
+          <a href={localePath("/about")} class="hover:underline leading-[0.9]">About</a>
+          <a class="hover:underline leading-[0.9]" href={localePath("/sides")}>Sides</a>
+          <a class="hover:underline leading-[0.9]" href="#contact">Contact</a>
+        </nav>
       </a>
       <a href={localePath("/")} class=" lg:hidden flex flex-col">
         <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> the  </span>
         <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> brand </span>
         <span class=" uppercase text-xl lg:text-8xl font-bold leading-none ml-3 lg:ml-12"> side </span>
       </a>
-      <nav class="text-md flex lg:flex-col gap-2 lg:gap-0.5 justify-center px-3 sm:mr-20 lg:mr-32">
+      <nav class="text-md flex lg:hidden gap-2 lg:gap-0.5 justify-center px-3 sm:mr-20 lg:mr-32">
         <a href={localePath("/work-home")} class="hover:underline leading-[0.9]">Work</a>
         <a href={localePath("/about")} class="hover:underline leading-[0.9]">About</a>
         <a class="hover:underline leading-[0.9]" href={localePath("/sides")}>Sides</a>
