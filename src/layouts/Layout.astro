@@ -31,14 +31,14 @@ function localePath(path: string) {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body class="bg-white w-full overflow-x-hidden ">
-		<header class="top-0 w-full h-20  border-black fixed z-30 bg-black text-white flex justify-between items-center transition-all duration-300">
+		<header class="top-0 w-full h-20  border-black fixed z-30 bg-black text-white flex justify-between lg:justify-start lg:gap-2 items-center transition-all duration-300">
       <a href={localePath("/")} class="hidden lg:flex  ">
-        <span class=" uppercase lg:text-7xl  xl:text-8xl font-bold leading-none ml-3 lg:ml-12 "> the brand side </span>
+        <span class=" uppercase lg:text-7xl mb-16 xl:mb-20  xl:text-9xl font-bold leading-none ml-3 lg:ml-12 "> the brand side </span>
         <nav class="text-md hidden lg:flex lg:flex-col gap-2 lg:gap-0.5 justify-center px-3 sm:mr-20 lg:mr-32">
           <a href={localePath("/work-home")} class="hover:underline leading-[0.9]">Work</a>
           <a href={localePath("/about")} class="hover:underline leading-[0.9]">About</a>
@@ -63,7 +63,7 @@ function localePath(path: string) {
 	  </header>
 		
 		<slot />
-    <div class="fixed left-10 bottom-5 gap-40 text-[0.56rem] hidden xl:flex z-0 redes game">
+    <div class="fixed left-10 bottom-5 gap-40 text-xs hidden xl:flex z-0 redes game">
       <div class="shadow-texto">2023 THE "brand" SIDE</div>
       <div class="shadow-texto">BEHANCE</div>
       <div class="shadow-texto">LINKEDIN</div>
@@ -138,13 +138,7 @@ function localePath(path: string) {
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 
-  @font-face {
-    font-family: 'MonumentGrotesk';
-    src: url('fonts/MonumentGrotesk-Medium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+
 
 	:root {
 		--accent: 124, 58, 237;
@@ -179,6 +173,8 @@ function localePath(path: string) {
   }
 
   .game {
+
+    /* font-family: 'ft88'; */
     font-family: 'Press Start 2P', cursive;
   }
 

@@ -154,8 +154,8 @@ function localePath(path: string) {
 		{
 			trabajos.map((trabajo: any, index: number) => {
 				return (
-					<a class="lg:flex gap-5 mt-10 mb-30 lg:py-10 md:sticky top-20 bg-[white]" href={localePath("work/" + trabajo._id)}>
-						<img src={urlForImage(trabajo.imagen1_main).url()} class="lg:w-[50vw] lg:h-[500px] object-cover lg:px-4 lg:border-r-2 border-black" />
+					<a class="lg:flex gap-5 mt-10 mb-30 lg:py-5 lg:sticky trabajo top-20 bg-[white]" href={localePath("work/" + trabajo._id)}>
+						<img src={urlForImage(trabajo.imagen1_main).url()} class="w-full lg:w-[50vw] lg:h-[500px] object-cover lg:px-4 lg:border-r-2 border-black" />
 						<hr class="border border-black">
 						<div class="lg:w-[22vw] flex items-center mt-2 lg:mt-0 lg:block px-4 lg:border-r-2 border-black relative">
 							<div class="lg:absolute bottom-2 left-0 max-w-full">
@@ -247,10 +247,15 @@ elementos.forEach((element) => {
 });
 
 
+const trabajos = document.querySelectorAll('.trabajo')
 
-</script>
+document.addEventListener('scroll', function() {
 
-<style>
 	
 
-	</style>
+	trabajos.forEach((trabajo) => {
+		
+	})
+})
+
+</script>

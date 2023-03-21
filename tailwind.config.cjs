@@ -6,7 +6,8 @@ module.exports = {
 			fontFamily: {
 				"Georgia": ["Georgia"],
 				"Inter": ["Inter"],
-				"MonumentGrotesk": ["MonumentGrotesk"]
+				"MonumentGrotesk": ["MonumentGrotesk"],
+				"ft88": ["ft88"],
 			},
 			animation: {
         'desaparecer': 'desaparecer 5s linear ',

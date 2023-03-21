@@ -33,7 +33,7 @@ function localePath(path: string) {
 
 ---
 
-<Layout title="about - The Brand Side">
+<Layout title="About - The Brand Side">
   <div class="lg:min-h-screen pt-20 relative ">
     
     <div id="line-container" class="z-0 hidden lg:block">
@@ -85,7 +85,7 @@ function localePath(path: string) {
         </div>
       </div>
       <div class="lg:w-2/3">
-        <div class="lg:flex ">
+        <!-- <div class="lg:flex ">
           <div class=" flex-1 p-3 relative mt-20">
             <div class=" bottom-2 max-w-full">
               <img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4083208/upload-5a8ac1bf-3770-464f-a456-aa6eca1ed723.png?e=webp&nll=true" alt="" class="w-80 py-2 m-auto rounded-t-full" >
@@ -110,23 +110,36 @@ function localePath(path: string) {
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
         {
           equipo.map((miembro: any) => {
             return (
               <div class="lg:flex min-h-screen">
                 <div class=" flex-1 p-3 relative mt-20">
                   <div class=" bottom-2 max-w-full">
-                    <img src={urlForImage(miembro.imagen).url()} alt="" class="w-80 py-2 m-auto rounded-t-full" >
+                    {
+                      miembro.imagenes.map((imagen: any) => {
+                        return (
+                          <img src={urlForImage(imagen).url()} alt="" class="w-80 py-2 m-auto rounded-t-full" >
+                        )
+                      })
+                    }
                   </div>
                 </div>
                 <div class="flex-1 p-3 relative mt-20">
                   <div class="  text-[0.6rem] xl:text-[0.8rem] px-2">
               
                     <span class="text-5xl font-bold text-gray-800">{miembro.nombre}</span>
+                    
                     <p class="game mt-12">
-                      {miembro.rol[lenguaje]}
-                    </span>
+                    {
+                      miembro.rol.map((rol: any) => {
+                        return (
+                            <p class="game"> { rol[lenguaje] } </p>
+                          )
+                        })
+                      }
+                    </p>
                     
                     <div class="text-lg font-Georgia mt-12">
                       <PortableText value={miembro.descripcion_largo[lenguaje]}>
