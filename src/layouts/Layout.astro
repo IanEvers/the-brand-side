@@ -63,7 +63,7 @@ function localePath(path: string) {
 	  </header>
 		
 		<slot />
-    <div class="fixed left-10 bottom-5 gap-40 text-xs hidden xl:flex z-0 redes game">
+    <div class="fixed left-10 bottom-5 gap-40 text-xs hidden xl:flex z-0 redes ft">
       <div class="shadow-texto">2023 THE "brand" SIDE</div>
       <div class="shadow-texto">BEHANCE</div>
       <div class="shadow-texto">LINKEDIN</div>
@@ -137,7 +137,28 @@ function localePath(path: string) {
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+  @font-face {
+    font-family: 'MonumentGrotesque';
+    src: url('fonts/MonumentGrotesk-Bold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
+  @font-face {
+    font-family: 'FT88-Regular';
+    src: url('fonts/FT88-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .monu {
+    font-family: 'MonumentGrotesque', sans-serif;
+  }
+  .ft {
+    font-family: 'FT88', sans-serif;
+  }
 
 
 	:root {
@@ -156,6 +177,7 @@ function localePath(path: string) {
         url(https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/upload-664d70d9-6d43-4539-912a-fd2862e97ab5.png?w=75) 1x,
         url(https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/upload-664d70d9-6d43-4539-912a-fd2862e97ab5.png) 2x
       ), auto;
+
 	}
 
   .cursor {
