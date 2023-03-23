@@ -33,15 +33,13 @@ async function getTrabajos() {
   return posts;
 }
 
-const trabajos = await getTrabajos()
-
 async function getMain() {
   const query = groq`* [_type == "main"]`;
   const posts = await useSanityClient().fetch(query);
   return posts[0];
 }
 
-const main = await getMain()
+const [trabajos, main] =  await Promise.all([getTrabajos(), getMain()]);
 
 const lenguaje = Astro.url.searchParams.get('lang') || "es"
 

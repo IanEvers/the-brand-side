@@ -14,7 +14,6 @@ async function getEquipo() {
   return posts;
 }
 
-const equipo = await getEquipo()
 
 async function getAbout() {
   const query = groq`* [_type == "about"]`;
@@ -22,8 +21,7 @@ async function getAbout() {
   return about[0];
 }
 
-const about = await getAbout()
-
+const [about, equipo] = await Promise.all([getAbout(), getEquipo()]);
 
 const lenguaje = Astro.url.searchParams.get('lang') || "es"
 
