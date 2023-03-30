@@ -18,7 +18,7 @@ async function getTrabajos() {
 }
 
 const {trabajoMock, trabajos, trabajoIndex} = await getTrabajos()
-
+console.log(trabajoMock)
 
 const trabajoPrevio = trabajos[trabajoIndex-1] ? trabajos[trabajoIndex-1] : null
 const trabajoSiguiente = trabajos[trabajoIndex+1] ? trabajos[trabajoIndex+1] : null
@@ -76,7 +76,7 @@ function localePath(path: string) {
       </div>
 
       <div class="my-6 px">
-        <img src={urlForImage(trabajoMock?.imagen2).url()} alt="" class="w-full object-cover max-h-[500px]">
+        {trabajoMock?.imagen2 && <img src={urlForImage(trabajoMock?.imagen2).url()} alt="" class="w-full object-cover max-h-[500px]">}
 
         <div class="lg:flex justify-center m-auto max-w-5xl my-12 font-Inter">
           <div class="p-6 lg:border-r lg:border-l border-black">
@@ -90,12 +90,12 @@ function localePath(path: string) {
       </div>
 
       <div class="lg:flex gap-6 p-3 my-6 justify-center">
-        <img src={urlForImage(trabajoMock?.imagen3_grid).url()} alt="" class="lg:w-1/2 object-cover p-2">
-        <img src={urlForImage(trabajoMock?.imagen4_grid).url()} alt="" class="lg:w-1/2 object-cover p-2">
+        {trabajoMock?.imagen3_grid && <img src={urlForImage(trabajoMock?.imagen3_grid).url()} alt="" class="lg:w-1/2 object-cover p-2">}
+        {trabajoMock?.imagen4_grid && <img src={urlForImage(trabajoMock?.imagen4_grid).url()} alt="" class="lg:w-1/2 object-cover p-2">}
       </div>
       
       <div class="lg:flex mb-12 font-Inter">
-        <img src={urlForImage(trabajoMock?.imagen5).url()} alt="" class="p-2 lg:w-3/4">
+        {trabajoMock?.imagen5 &&  <img src={urlForImage(trabajoMock?.imagen5).url()} alt="" class="p-2 lg:w-3/4">}
         <div class="flex flex-col justify-end px-4 w-1/4">
           <h2 class="font-bold text-lg lg:text-3xl mb-3">{trabajoMock?.texto3_titulo[lenguaje]}</h2>
           <p class="text-sm lg:text-xl font-Georgia">{trabajoMock?.texto3[lenguaje]}</p>
@@ -103,9 +103,9 @@ function localePath(path: string) {
       </div>
 
       <div class="flex overflow-auto gap-5 my-7">
-        <img src={urlForImage(trabajoMock?.imagen6_sidescroll).url()} alt="" class="w-full object-cover max-h-[500px]">
-        <img src={urlForImage(trabajoMock?.imagen7_sidescroll).url()} alt="" class="w-full object-cover max-h-[500px]">
-        <img src={urlForImage(trabajoMock?.imagen8_sidescroll).url()} alt="" class="w-full object-cover max-h-[500px]">
+        {trabajoMock?.imagen6_sidescroll && <img src={urlForImage(trabajoMock?.imagen6_sidescroll).url()} alt="" class="w-full object-cover max-h-[500px]">}
+        {trabajoMock?.imagen7_sidescroll && <img src={urlForImage(trabajoMock?.imagen7_sidescroll).url()} alt="" class="w-full object-cover max-h-[500px]">}
+        {trabajoMock?.imagen8_sidescroll && <img src={urlForImage(trabajoMock?.imagen8_sidescroll).url()} alt="" class="w-full object-cover max-h-[500px]">}
       </div>
 
       <div class="max-w-7xl lg:flex gap-5 font-Inter my-12">
@@ -119,15 +119,13 @@ function localePath(path: string) {
           <p class=" leading-tight">{trabajoMock?.texto4_bis[lenguaje]}</p>
         </div>
       </div>
-
-      <img src={urlForImage(trabajoMock?.imagen9).url()} alt="" class="w-full object-cover h-screen">
+      { trabajoMock?.imagen9 &&  <img src={urlForImage(trabajoMock?.imagen9).url()} alt="" class="w-full object-cover h-screen"> }
 
       <div class="lg:flex gap-4 justify-end my-24">
         <p class="text-2xl lg:text-4xl max-w-5xl xl:text-5xl 2xl:text-7xl font-medium p-3">{trabajoMock?.texto5_big[lenguaje]}</p>
-        <img src={urlForImage(trabajoMock?.imagen10).url()} alt="" class="max-w-full lg:max-w-xl self-end object-cover">
+        { trabajoMock?.imagen10 && <img src={urlForImage(trabajoMock?.imagen10).url()} alt="" class="max-w-full lg:max-w-xl self-end object-cover"> }
       </div>
-
-      <img src={urlForImage(trabajoMock?.imagen11).url()} alt="" class="lg:w-2/3 max-h-[550px]  object-cover mt-24 mb-6">
+      { trabajoMock?.imagen11 && <img src={urlForImage(trabajoMock?.imagen11).url()} alt="" class="lg:w-2/3 max-h-[550px]  object-cover mt-24 mb-6"> }
       <hr class="border-black lg:w-2/3 mt-12">
 
       <div class="xl:flex max-w-5xl font-Inter gap-9 mt-6  mb-12">
