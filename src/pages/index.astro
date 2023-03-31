@@ -51,16 +51,16 @@ function localePath(path: string) {
 
 <Layout title="The Brand Side">
 	<div class="fixed w-full top-0 bg-black h-5 2xl:h-7 z-10"></div>
-	<div class="flex flex-col m-auto  max-w-3xl lg:max-w-full lg:flex-row  gap-10 px-3  lg:items-center w-full relative pt-16 lg:pt-6 2xl:mt-0">
-		<div class=" lg:flex  gap-16 items-center">
-			<div class="flex mt-6 lg:mt-0">
+	<div class="flex flex-col m-auto  max-w-3xl lg:max-w-full lg:flex-row xl:grid xl:grid-cols-6  gap-10 px-3  lg:items-center w-full relative pt-16 lg:pt-6 2xl:mt-0">
+		<div class=" lg:flex col-span-4 gap-16 items-center">
+			<div class="flex mt-6 lg:mt-0 xl:w-1/2">
 				<div class=" flex flex-col gap-0 lg:pl-4 monu">
-					<span class="text-7xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] 2xl:leading-[6rem]">the</span>
-					<span class="text-7xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] 2xl:leading-[6rem]">brand </span>
-					<span class="text-7xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] 2xl:leading-[6rem]">side</span>
+					<span class="text-7xl xl:text-8xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] xl:leading-[4.7rem] 2xl:leading-[6rem]">the</span>
+					<span class="text-7xl xl:text-8xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] xl:leading-[4.7rem] 2xl:leading-[6rem]">brand </span>
+					<span class="text-7xl xl:text-8xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] xl:leading-[4.7rem] 2xl:leading-[6rem]">side</span>
 				</div>
 			</div>
-			<div class="text-xs mt-8 lg:mt-0">
+			<div class="text-xs mt-8 lg:mt-0 xl:w-1/2">
 				<div class="font-Georgia prose text-black text-xl  2xl:text-2xl max-w-xl ">
 					<PortableText value={main.mainText[lenguaje]}></PortableText>
 				</div>
@@ -83,7 +83,7 @@ function localePath(path: string) {
 			
 		</div>
 		<div class="hidden lg:block">
-			<nav class="text-3xl 2xl:text-6xl flex flex-col monu">
+			<nav class="text-3xl xl:text-5xl 2xl:text-6xl flex flex-col monu">
 				<a href={localePath("/work-home")} class="hover:underline leading-[0.9]">Work</a>
 				<a href={localePath("/about")} class="hover:underline leading-[0.9]">About</a>
 				<a href={localePath("/sides")} class="hover:underline leading-[0.9]">Sides</a>

@@ -70,7 +70,7 @@ function localePath(path: string) {
       <a href={footer.instagram} class="shadow-texto">INSTAGRAM</a>
     </div>
 
-    <footer class=" bg-black  relative z-10">
+    <footer class=" bg-black  relative z-10 ">
       <div class="flex w-full gap-2 justify-center">
         <img src={batman} alt="batman" class="w-[23rem] max-w-screen p-4">
         <img src={batman} alt="batman" class="w-[23rem] max-w-screen p-4 hidden md:block">
@@ -79,8 +79,8 @@ function localePath(path: string) {
       </div>
       <hr class="border-white  px-6 mx-6 mt-3">
 
-      <div class="flex flex-col xl:flex-row gap-36 text-white p-6 items-center">
-        <div>
+      <div class="flex flex-col xl:flex-row gap-36 text-white p-6 items-center xl:grid xl:grid-cols-6">
+        <div class="col-span-2">
           <p class="text-6xl monu">{footer.titulo[lenguaje]}</p>
           <div class="text-lg pt-12 prose text-white max-w-md font-Georgia">
 
@@ -94,7 +94,7 @@ function localePath(path: string) {
           </div>
           
         </div>
-        <div class="flex flex-col  justify-center" id="contact">
+        <div class="flex flex-col  justify-center col-span-2" id="contact">
           <input type="text" placeholder="Name" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
           <input type="email" placeholder="Email" name="email" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
           <input type="text" placeholder="Message" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
@@ -108,7 +108,7 @@ function localePath(path: string) {
         </div>
       </div>
 
-      <div class="flex flex-col lg:flex-row justify-between  mt-12 items-center lg:items-end gap-12 lg:gap-32 text-white py-3 px-6">
+      <div class="flex flex-col lg:flex-row justify-between  mt-12 items-center lg:items-end gap-12 lg:gap-32 text-white py-3 px-6 col-span-1">
         <p class="text-3xl lg:text-4xl text-center"><span class="font-bold"> ©THE BRAND SIDE </span> - 2023</p>
         <div class=" flex-col items-center hidden lg:flex">
           <div class="flex">
