@@ -18,7 +18,6 @@ async function getTrabajos() {
 }
 
 const {trabajoMock, trabajos, trabajoIndex} = await getTrabajos()
-console.log(trabajoMock)
 const trabajoPrevio = trabajos[trabajoIndex-1] ? trabajos[trabajoIndex-1] : null
 const trabajoSiguiente = trabajos[trabajoIndex+1] ? trabajos[trabajoIndex+1] : null
 
