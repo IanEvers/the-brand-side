@@ -18,7 +18,7 @@ async function getTrabajos() {
 }
 
 const {trabajoMock, trabajos, trabajoIndex} = await getTrabajos()
-
+console.log(trabajoMock)
 const trabajoPrevio = trabajos[trabajoIndex-1] ? trabajos[trabajoIndex-1] : null
 const trabajoSiguiente = trabajos[trabajoIndex+1] ? trabajos[trabajoIndex+1] : null
 
@@ -69,7 +69,7 @@ function localePath(path: string) {
           </div>
 
           <div class="mt-8">
-            <p >{trabajoMock?.texto1[lenguaje]}</p>
+            <p >{trabajoMock?.texto1 ? trabajoMock?.texto1[lenguaje] : ''}</p>
           </div>
         </div>
       </div>
@@ -79,10 +79,10 @@ function localePath(path: string) {
 
         <div class="lg:flex justify-center m-auto max-w-5xl my-12 font-Inter">
           <div class="p-6 lg:border-r lg:border-l border-black">
-            <p class="font-bold text-xl lg:text-3xl ">{trabajoMock?.texto2[lenguaje]}</p>
+            <p class="font-bold text-xl lg:text-3xl ">{trabajoMock?.texto2 ? trabajoMock?.texto2[lenguaje] : ''}</p>
           </div>
           <div>
-            <p class="px-6 ">{trabajoMock?.texto2bis[lenguaje]}</p>
+            <p class="px-6 ">{trabajoMock?.texto2bis ? trabajoMock?.texto2bis[lenguaje] : '' }</p>
           </div>
         </div>
 
@@ -96,8 +96,8 @@ function localePath(path: string) {
       <div class="lg:flex mb-12 font-Inter">
         {trabajoMock?.imagen5 &&  <img src={urlForImage(trabajoMock?.imagen5).url()} alt="" class="p-2 lg:w-3/4">}
         <div class="flex flex-col justify-end px-4 lg:w-1/4">
-          <h2 class="font-bold text-lg lg:text-3xl mb-3">{trabajoMock?.texto3_titulo[lenguaje]}</h2>
-          <p class="text-sm lg:text-xl font-Georgia">{trabajoMock?.texto3[lenguaje]}</p>
+          <h2 class="font-bold text-lg lg:text-3xl mb-3">{trabajoMock?.texto3_titulo ? trabajoMock?.texto3_titulo[lenguaje] : ''}</h2>
+          <p class="text-sm lg:text-xl font-Georgia">{trabajoMock?.texto3 ? trabajoMock?.texto3[lenguaje] : ''}</p>
         </div>
       </div>
 
@@ -109,19 +109,19 @@ function localePath(path: string) {
 
       <div class="max-w-7xl lg:flex gap-5 font-Inter my-12">
         <div class=" basis-1/4">
-          <p class="w-full font-bold text-3xl leading-tight">{trabajoMock?.texto4_title[lenguaje]}</p>
+          <p class="w-full font-bold text-3xl leading-tight">{trabajoMock?.texto4_title ? trabajoMock?.texto4_title[lenguaje] : ''}</p>
         </div>
         <div class="basis-1/3">
-          <p class=" leading-tight">{trabajoMock?.texto4[lenguaje]}</p>
+          <p class=" leading-tight">{trabajoMock?.texto4 ? trabajoMock?.texto4[lenguaje] : ''}</p>
         </div>
         <div class="basis-1/3">
-          <p class=" leading-tight">{trabajoMock?.texto4_bis[lenguaje]}</p>
+          <p class=" leading-tight">{trabajoMock?.texto4_bis ? trabajoMock?.texto4_bis[lenguaje] : ''}</p>
         </div>
       </div>
       { trabajoMock?.imagen9 &&  <img src={urlForImage(trabajoMock?.imagen9).url()} alt="" class="w-full object-cover h-screen"> }
 
       <div class="lg:flex gap-4 justify-end my-24">
-        <p class="text-2xl lg:text-4xl max-w-5xl xl:text-5xl 2xl:text-7xl font-medium p-3">{trabajoMock?.texto5_big[lenguaje]}</p>
+        <p class="text-2xl lg:text-4xl max-w-5xl xl:text-5xl 2xl:text-7xl font-medium p-3">{trabajoMock?.texto5_big ? trabajoMock?.texto5_big[lenguaje] : ''}</p>
         { trabajoMock?.imagen10 && <img src={urlForImage(trabajoMock?.imagen10).url()} alt="" class="max-w-full lg:max-w-xl self-end object-cover"> }
       </div>
       { trabajoMock?.imagen11 && <img src={urlForImage(trabajoMock?.imagen11).url()} alt="" class="lg:w-2/3 max-h-[550px]  object-cover mt-24 mb-6"> }
@@ -129,11 +129,11 @@ function localePath(path: string) {
 
       <div class="xl:flex max-w-5xl font-Inter gap-9 mt-6  mb-12">
         <div class="basis-1/2 max-w-3xl">
-          <p class="font-bold text-xl  leading-none">{trabajoMock?.texto6_final[lenguaje]}</p>
+          <p class="font-bold text-xl  leading-none">{trabajoMock?.texto6_final ? trabajoMock?.texto6_final[lenguaje] : ''}</p>
         </div>
         <div class="basis-1/2 max-w-3xl mt-6 xl:mt-0">
           <div class="font-extralight text-sm">
-					  <PortableText value={trabajoMock?.texto6_datos[lenguaje]}></PortableText>
+					  <PortableText value={(trabajoMock?.texto6_datos ? trabajoMock?.texto6_datos[lenguaje] : '')}></PortableText>
           </div>
         </div>
       
