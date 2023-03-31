@@ -28,11 +28,11 @@ const lenguaje = Astro.url.searchParams.get('lang') || "es"
 
 function localePath(path: string) {
 	return path + '?lang=' + lenguaje
-} 
+}
 
 ---
 
-<Layout title="Trabajo - The Brand Side">
+<Layout title={`Trabajo - ${trabajoMock?.nombre[lenguaje]} -The Brand Side`}>
     <div class="pt-24 px-2 lg:px-6 relative">
       
       <div class="lg:flex gap-2 font-Inter">
@@ -95,7 +95,7 @@ function localePath(path: string) {
       
       <div class="lg:flex mb-12 font-Inter">
         {trabajoMock?.imagen5 &&  <img src={urlForImage(trabajoMock?.imagen5).url()} alt="" class="p-2 lg:w-3/4">}
-        <div class="flex flex-col justify-end px-4 w-1/4">
+        <div class="flex flex-col justify-end px-4 lg:w-1/4">
           <h2 class="font-bold text-lg lg:text-3xl mb-3">{trabajoMock?.texto3_titulo[lenguaje]}</h2>
           <p class="text-sm lg:text-xl font-Georgia">{trabajoMock?.texto3[lenguaje]}</p>
         </div>
@@ -162,9 +162,9 @@ function localePath(path: string) {
           </a>
         </div>
         <div class="self-center  flex-1 flex flex-col lg:flex-row justify-between lg:block mt-12 lg:mt-0">
-          <a href={localePath("work/" + trabajoPrevio ? trabajoPrevio?._id : '')} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoPrevio ? " block" : " hidden")}>prev project</a>
+          <a href={localePath("work/" + trabajoPrevio ? trabajoPrevio?._id : '')} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game " + ( trabajoPrevio ? " block" : " hidden")}>prev project</a>
           <hr class="border-black my-4 ">
-          <a href={localePath("work/" + trabajoSiguiente ? trabajoSiguiente?._id : '')} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game" + ( trabajoSiguiente ? " block" : " hidden")}>next project</a>
+          <a href={localePath("work/" + trabajoSiguiente ? trabajoSiguiente?._id : '')} class={"text-3xl xl:text-5xl 2xl:text-7xl text-center game " + ( trabajoSiguiente ? " block" : " hidden")}>next project</a>
         </div>
 
       </div>
@@ -174,7 +174,28 @@ function localePath(path: string) {
 </Layout>
 
 <style>
+  @font-face {
+    font-family: 'FT';
+    src: url('../fonts/FT88-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
+  @font-face {
+    font-family: 'PPNeueMontreal';
+    src: url('../fonts/PPNeueMontreal-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .monu {
+    font-family: 'PPNeueMontreal', sans-serif;
+  }
+  .game {
+    font-family: 'FT';
+  }
 
 </style>
 

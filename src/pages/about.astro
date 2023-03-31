@@ -63,7 +63,7 @@ function localePath(path: string) {
           </div>
         </div>
         <div class="flex-1 p-3 relative">
-          <div class="lg:absolute bottom-2 game text-[0.6rem] xl:text-[0.8rem] px-2 max-w-3xl prose text-black">
+          <div class="lg:absolute bottom-2 game  leading-4 px-2 max-w-3xl prose text-black">
             <PortableText
               value={about.texto_largo[lenguaje]}
             ></PortableText>
@@ -83,32 +83,7 @@ function localePath(path: string) {
         </div>
       </div>
       <div class="lg:w-2/3">
-        <!-- <div class="lg:flex ">
-          <div class=" flex-1 p-3 relative mt-20">
-            <div class=" bottom-2 max-w-full">
-              <img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4083208/upload-5a8ac1bf-3770-464f-a456-aa6eca1ed723.png?e=webp&nll=true" alt="" class="w-80 py-2 m-auto rounded-t-full" >
-              <img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4083208/upload-79210371-67ec-46be-816b-5ce286028827.png?e=webp&nll=true&cX=50&cY=0&cW=435.2535885167464&cH=548" alt="" class="w-80 py-2 m-auto rounded-t-full" >
-            </div>
-          </div>
-          <div class="flex-1 p-3 relative mt-20">
-            <div class="  text-[0.6rem] xl:text-[0.8rem] px-2">
-        
-              <span class="text-5xl font-bold text-gray-800">Juan Muiño + Fernando Oltolina</span>
-              <p class="game mt-12">
-                Director creativo Redactor
-              </span>
-              <p class="game">
-                Director creativo Arte
-              </p>
-              <p class="text-lg font-Georgia mt-12">
-                Muchas marcas confiaron en nosotros, y en los últimos años trabajamos con Citroën, Peugeot, Jeep, Netflix, Starbucks, Ayudín, LG, Molinos, P&G, ZonaJobs, Inmuebles24, Coca Cola, Cabify, Clorox, Supervielle y Lemon Cash, entre otras.
-              </p>
-              <p class="text-lg font-Georgia mt-12">
-                Tenemos una cantidad de 34 premios ganados en diferentes festivales entre ellos: Cannes Lions, Pencil Ad, El ojo de Iberoamerica, El diente, Effie, Lapiz
-              </p>
-            </div>
-          </div>
-        </div> -->
+       
         {
           equipo.map((miembro: any) => {
             return (
@@ -118,7 +93,7 @@ function localePath(path: string) {
                     {
                       miembro.imagenes.map((imagen: any) => {
                         return (
-                          <img src={urlForImage(imagen).url()} alt="" class="w-80 py-2 m-auto rounded-t-full" >
+                          <img src={urlForImage(imagen).url()} alt="" class="w-80 min-h-[400px] object-cover py-2 m-auto rounded-t-full" >
                         )
                       })
                     }
@@ -129,11 +104,11 @@ function localePath(path: string) {
               
                     <span class="text-5xl font-bold text-gray-800 monu">{miembro.nombre}</span>
                     
-                    <p class="game mt-12">
+                    <p class=" mt-12">
                     {
                       miembro.rol.map((rol: any) => {
                         return (
-                            <p class="game"> { rol[lenguaje] } </p>
+                            <p class="game text-sm"> { rol[lenguaje] } </p>
                           )
                         })
                       }
