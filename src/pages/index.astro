@@ -51,7 +51,7 @@ function localePath(path: string) {
 
 <Layout title="The Brand Side">
 	<div class="fixed w-full top-0 bg-black h-5 2xl:h-7 z-10"></div>
-	<div class="flex flex-col m-auto  max-w-3xl lg:max-w-full lg:flex-row xl:grid xl:grid-cols-6  gap-10 px-3   w-full relative pt-16 ">
+	<div class="flex flex-col m-auto  max-w-3xl lg:max-w-full lg:flex-row xl:grid xl:grid-cols-6  gap-10 px-3   w-full relative pt-16 xl:pt-12 2xl:pt-16 ">
 		<div class=" lg:flex col-span-4 gap-16 ">
 			<div class="flex mt-6 lg:-mt-3 xl:-mt-3 xl:w-1/2 relative">
 				<div class=" flex flex-col gap-0 lg:pl-4 monu hover_droopy">
@@ -68,7 +68,7 @@ function localePath(path: string) {
 						<PortableText value={main.mainText[lenguaje]}></PortableText>
 					</div>
 				</div>
-				<div class="gap-12 mt-5 text-2xl hidden xl:flex monu">
+				<div class="gap-12 mt-5 text-xl 2xl:text-2xl hidden xl:flex monu">
 					<div class="flex flex-col">
 						
 						<span class="leading-[0.95] ">{new Date().toLocaleTimeString('en-US', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false, hour: '2-digit', minute:'2-digit' })}</span>
@@ -98,11 +98,11 @@ function localePath(path: string) {
 		<div class=" gap-4 self-start flex lg:hidden xl:flex ml-6 lg:ml-0">
 			<div class="mb-3 monu">
 				<div class="relative">
-					<div class={"bg-black h-3 w-3 lg:h-5 lg:w-5 rounded-full self-end absolute bottom-0 -left-6" + (lenguaje == 'en' ? ' hidden' : '')}> </div>
+					<div class={"bg-black h-3 w-3 lg:h-4 lg:w-4 rounded-full self-end absolute bottom-0 -left-6" + (lenguaje == 'en' ? ' hidden' : '')}> </div>
 					<a href={"/?lang=es"} class="uppercase block text-xl 2xl:text-3xl leading-4 2xl:leading-6">español</a>
 				</div>
 				<div  class="relative">
-					<div class={"bg-black h-3 w-3 lg:h-5 lg:w-5 rounded-full self-end absolute bottom-0 -left-6" + (lenguaje == 'es' ? ' hidden' : '')}> </div>
+					<div class={"bg-black h-3 w-3 lg:h-4 lg:w-4 rounded-full self-end absolute bottom-0 -left-6" + (lenguaje == 'es' ? ' hidden' : '')}> </div>
 
 					<a href={"/?lang=en"} class="uppercase block text-xl 2xl:text-3xl leading-4 2xl:leading-6">english</a>
 				</div>

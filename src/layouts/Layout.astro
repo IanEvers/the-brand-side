@@ -63,11 +63,11 @@ function localePath(path: string) {
 	  </header>
 		
 		<slot />
-    <div class="fixed left-10 bottom-5 gap-40  hidden xl:flex z-0 redes game">
-      <div class="shadow-texto">2023 THE "brand" SIDE</div>
-      <a href={footer.behance} class="shadow-texto">BEHANCE</a>
-      <a href={footer.linkedin} class="shadow-texto">LINKEDIN</a>
-      <a href={footer.instagram} class="shadow-texto">INSTAGRAM</a>
+    <div class="fixed left-10 bottom-5 gap-40   hidden xl:flex z-0 text-sm game">
+      <div class="">2023 THE "brand" SIDE</div>
+      <a href={footer.behance} class="">BEHANCE</a>
+      <a href={footer.linkedin} class="">LINKEDIN</a>
+      <a href={footer.instagram} class="">INSTAGRAM</a>
     </div>
 
     <footer class=" bg-black  relative z-10 ">
@@ -153,12 +153,21 @@ function localePath(path: string) {
   }
 
   @font-face {
-    font-family: 'FT';
+    font-family: 'ft';
     src: url('fonts/FT88-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
   }
+
+  
+	@font-face {
+		font-family: 'Georgia';
+		src: url('/fonts/Georgia.woff') format('ttf');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
 
   .monu {
     font-family: 'PPNeueMontreal', sans-serif;
@@ -194,15 +203,10 @@ function localePath(path: string) {
   }
 
 
-  .shadow-texto {
-    text-shadow: 2px 2px white;
-    color: black;
-  }
+
 
   .game {
-
     font-family: 'ft';
-    /* font-family: 'Press Start 2P', cursive; */
   }
 
   code {
@@ -210,13 +214,6 @@ function localePath(path: string) {
 			Bitstream Vera Sans Mono, Courier New, monospace;
   }
 
-	@font-face {
-		font-family: 'Georgia';
-		src: url('/fonts/Georgia.woff') format('ttf');
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
 
 	
 @font-face {
