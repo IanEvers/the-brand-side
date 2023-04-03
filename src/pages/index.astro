@@ -51,19 +51,22 @@ function localePath(path: string) {
 
 <Layout title="The Brand Side">
 	<div class="fixed w-full top-0 bg-black h-5 2xl:h-7 z-10"></div>
-	<div class="flex flex-col m-auto  max-w-3xl lg:max-w-full lg:flex-row xl:grid xl:grid-cols-6  gap-10 px-3  lg:items-center w-full relative pt-16 lg:pt-6 2xl:mt-0">
-		<div class=" lg:flex col-span-4 gap-16 items-center">
+	<div class="flex flex-col m-auto  max-w-3xl lg:max-w-full lg:flex-row xl:grid xl:grid-cols-6  gap-10 px-3   w-full relative pt-16 ">
+		<div class=" lg:flex col-span-4 gap-16 ">
 			<div class="flex mt-6 lg:-mt-3 xl:-mt-3 xl:w-1/2 relative">
 				<div class=" flex flex-col gap-0 lg:pl-4 monu hover_droopy">
 					<span class="text-7xl xl:text-8xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] xl:leading-[4.7rem] 2xl:leading-[6.2rem]">the</span>
 					<span class="text-7xl xl:text-8xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] xl:leading-[4.7rem] 2xl:leading-[6.2rem]">brand </span>
 					<span class="text-7xl xl:text-8xl 2xl:text-9xl font-bold uppercase leading-[3.3rem] xl:leading-[4.7rem] 2xl:leading-[6.2rem]">side</span>
 				</div>
-				<img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-119ac8b2-538f-4521-bfb3-caeb0abf3eab.jpg?w=158&e=webp&cX=1&cY=0&cW=440&cH=500" alt="" class="absolute droopy hidden w-20 -bottom-5 right-[34%]">
+				<img src="/droopy.png" alt="" class="absolute droopy hidden w-20 -bottom-5 right-[34%]">
 			</div>
 			<div class="text-xs mt-8 lg:mt-0 xl:w-1/2">
-				<div class="font-Georgia prose text-black text-xl  2xl:text-2xl max-w-xl ">
-					<PortableText value={main.mainText[lenguaje]}></PortableText>
+				<div class="font-Georgia   text-black text-xl 2xl:text-2xl max-w-xl  ">
+					<div class="leading-7">
+
+						<PortableText value={main.mainText[lenguaje]}></PortableText>
+					</div>
 				</div>
 				<div class="gap-12 mt-5 text-2xl hidden xl:flex monu">
 					<div class="flex flex-col">
@@ -92,13 +95,17 @@ function localePath(path: string) {
 			</nav>
 		</div>
 		
-		<div class=" gap-4 self-start xl:mt-12  flex lg:hidden xl:flex ">
-			<div class="bg-black h-5 w-5 rounded-full self-end">
-
-			</div>
+		<div class=" gap-4 self-start flex lg:hidden xl:flex ml-6 lg:ml-0">
 			<div class="mb-3 monu">
-				<a href={"/?lang=es"} class="uppercase block text-xl 2xl:text-3xl leading-4 2xl:leading-6">español</a>
-				<a href={"/?lang=en"} class="uppercase block text-xl 2xl:text-3xl leading-4 2xl:leading-6">english</a>
+				<div class="relative">
+					<div class={"bg-black h-3 w-3 lg:h-5 lg:w-5 rounded-full self-end absolute bottom-0 -left-6" + (lenguaje == 'en' ? ' hidden' : '')}> </div>
+					<a href={"/?lang=es"} class="uppercase block text-xl 2xl:text-3xl leading-4 2xl:leading-6">español</a>
+				</div>
+				<div  class="relative">
+					<div class={"bg-black h-3 w-3 lg:h-5 lg:w-5 rounded-full self-end absolute bottom-0 -left-6" + (lenguaje == 'es' ? ' hidden' : '')}> </div>
+
+					<a href={"/?lang=en"} class="uppercase block text-xl 2xl:text-3xl leading-4 2xl:leading-6">english</a>
+				</div>
 			</div>
 		</div>
 		
@@ -139,7 +146,9 @@ function localePath(path: string) {
 			This side up↑↑↑↑↑ ↑↑↑↑↑↑ 
 			</span>
 		</p>
-		<img class="absolute right-9 bottom-3" src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-f18889c2-cd89-402d-9f2b-1d22d4e53a10.gif" >
+		<a href="https://www.youtube.com/watch?v=RaluG3ie2XQ" target="_blank">
+			<img class="absolute right-9 bottom-3" src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-f18889c2-cd89-402d-9f2b-1d22d4e53a10.gif" >
+		</a>
 	</div>
 
 	<section class="mt-36">
@@ -151,7 +160,7 @@ function localePath(path: string) {
 			trabajos.map((trabajo: any, index: number) => {
 				return (
 					<a class="lg:flex gap-5 mt-10 mb-30 lg:py-5 lg:sticky trabajo top-20 bg-[white]" href={localePath("work/" + trabajo._id)}>
-						<img src={urlForImage(trabajo.imagen1_main).url()} class="w-full lg:w-1/2 lg:h-[500px] object-cover lg:px-4 lg:border-r-2 border-black" />
+						<img src={urlForImage(trabajo.imagen1_main).width(900).url()} class="w-full lg:w-1/2 lg:h-[500px] object-cover lg:px-4 lg:border-r-2 border-black" />
 						<div class="lg:w-1/4 flex items-center mt-2 lg:mt-0 lg:block px-4 lg:border-r-2 border-black relative">
 							<div class="lg:absolute bottom-2 left-0 max-w-full">
 								<div class="uppercase font-Inter mb-2"> {trabajo.sides[0][lenguaje]} </div>
@@ -159,7 +168,7 @@ function localePath(path: string) {
 							</div>
 							<img src={flechaDiagonal} alt="flechita" class="hidden lg:block absolute top-2 right-2   w-12">
 						</div>
-						<div class="lg:w-1/4 p-6 lg:p-0  max-w-3xl text-sm leading-4 lg:max-w-none relative game">
+						<div class="lg:w-1/4 p-4 mt-2 lg:mt-0 max-w-3xl text-sm leading-3 lg:max-w-none relative game">
 							<p class="lg:absolute bottom-0 ">
 								{trabajo.texto1[lenguaje]}
 							</p>
