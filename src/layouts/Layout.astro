@@ -333,15 +333,15 @@ const footer = document.querySelector('footer');
 const observer2 = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.target === footer && entry.isIntersecting) {
-      header.classList.add('hidden')
+      header && header.classList.add('hidden')
       showHeader = false
     } else {
-      header.classList.remove('hidden')
+      header && header.classList.remove('hidden')
       showHeader = true
     }
   });
 });
 
-observer2.observe(footer);
+footer && observer2.observe(footer);
 
 </script>
