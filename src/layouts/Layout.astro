@@ -138,15 +138,8 @@ function localePath(path: string) {
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
   @font-face {
-    font-family: 'MonumentGrotesque';
-    src: url('fonts/MonumentGrotesk-Bold.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
     font-family: 'PPNeueMontreal';
-    src: url('fonts/PPNeueMontreal-Regular.woff') format('woff');
+    src: url('/fonts/PPNeueMontreal-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -154,7 +147,7 @@ function localePath(path: string) {
 
   @font-face {
     font-family: 'ft';
-    src: url('fonts/FT88-Regular.woff') format('woff');
+    src: url('/fonts/FT88-Regular.woff') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -201,9 +194,6 @@ function localePath(path: string) {
         url(https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/upload-664d70d9-6d43-4539-912a-fd2862e97ab5.png) 2x
       ), auto;
   }
-
-
-
 
   .game {
     font-family: 'ft';
@@ -276,6 +266,8 @@ function localePath(path: string) {
 
 <script>
 
+let showHeader = false
+
 window.addEventListener("resize", () => {
   if (window.innerWidth < 1026) {
     document.querySelector('header')?.classList.remove('hidden');
@@ -290,7 +282,7 @@ if(window.location.pathname == "/" ) {
 
   window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
-    if (currentScroll > 400 && window.innerWidth > 1023) {
+    if (currentScroll > 400 && window.innerWidth > 1023 && showHeader) {
       document.querySelector('header')?.classList.add('animate-fadeIn');
       document.querySelector('header')?.classList.remove('hidden');
     } else if(window.innerWidth > 1023) {
@@ -301,7 +293,7 @@ if(window.location.pathname == "/" ) {
 
   window.addEventListener("resize", () => {
     const currentScroll = window.pageYOffset;
-    if (currentScroll > 400 && window.innerWidth > 1023) {
+    if (currentScroll > 400 && window.innerWidth > 1023 ) {
       document.querySelector('header')?.classList.add('animate-fadeIn');
       document.querySelector('header')?.classList.remove('hidden');
     } else if(window.innerWidth > 1023) {
@@ -334,5 +326,22 @@ targets.forEach(function(target) {
   // Add the element to the watcher
   observer.observe(target);
 });
+
+const header = document.querySelector('header');
+const footer = document.querySelector('footer');
+
+const observer2 = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.target === footer && entry.isIntersecting) {
+      header.classList.add('hidden')
+      showHeader = false
+    } else {
+      header.classList.remove('hidden')
+      showHeader = true
+    }
+  });
+});
+
+observer2.observe(footer);
 
 </script>

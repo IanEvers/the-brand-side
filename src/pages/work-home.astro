@@ -23,9 +23,10 @@ function localePath(path: string) {
   <div>
 
     <div class="h-screen overflow-hidden bg-white">
-      <img src="https://d3n32ilufxuvd1.cloudfront.net/593641fc4ac3e7290178b1b1/63a1272c1b895900208e62f6/upload-c2681d12-ff2b-4c99-b6be-58e6f81652f8.png" class="h-[500vh] w-[500vw]  -mt-[200vh]     object-cover   lg:animate-rotate-slow bg-white" alt="">
-        
-      <span class="font-Georgia text-9xl lg:text-[15rem] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-texto  ">Work </span>
+      <div class="w-[300vw]">
+        <img src="/work.png" class=" bottom-[60vw]  relative -left-[36vw] object-cover lg:animate-rotate-slow bg-white" alt="">
+      </div>
+      <span class="font-Georgia text-9xl lg:text-[13rem] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">Work </span>
     </div>
 
     <section class="my-12 w-full">
@@ -34,7 +35,7 @@ function localePath(path: string) {
           trabajos.map((trabajo: any, index: number) => {
             return (
               <a class={"p-4 mt-2 cursor " + ((index + 1) % 3 == 0 ? ' col-span-2 ' : ' col-span-1 ')} href={localePath("/work/" + trabajo._id)}>
-                <img src={urlForImage(trabajo.imagen1_main).url()} class="w-full object-cover max-h-[600px]" />
+                <img src={urlForImage(trabajo.imagen1_main).width(1500).url()} class="w-full object-cover max-h-[600px]" />
 								<div class="text-5xl font-Georgia mt-5  leading-10" > {trabajo.nombre[lenguaje]} </div>
 								<div class="uppercase ml-[2px] mt-[10px] text-gray-700 font-Inter"> {trabajo.sides[0][lenguaje]} </div>
               </a>
