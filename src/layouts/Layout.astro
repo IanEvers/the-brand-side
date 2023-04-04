@@ -95,9 +95,9 @@ function localePath(path: string) {
           
         </div>
         <div class="flex flex-col  justify-center col-span-2" id="contact">
-          <input type="text" placeholder="Name" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
-          <input type="email" placeholder="Email" name="email" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
-          <input type="text" placeholder="Message" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b w-[30rem] max-w-[80vw]" >
+          <input type="text" placeholder="Name" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b max-w-[80vw]" >
+          <input type="email" placeholder="Email" name="email" class="text-2xl p-1 m-3 bg-black border-white border-b max-w-[80vw]" >
+          <input type="text" placeholder="Message" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b max-w-[80vw]" >
           <button class="text-2xl text-left m-2 p-2 hover:underline">Send</button>
         </div>
         <div class="flex flex-col justify-center ">
@@ -266,7 +266,7 @@ function localePath(path: string) {
 
 <script>
 
-let showHeader = false
+let showHeader = true
 
 window.addEventListener("resize", () => {
   if (window.innerWidth < 1026) {
@@ -331,15 +331,20 @@ const header = document.querySelector('header');
 const footer = document.querySelector('footer');
 
 const observer2 = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.target === footer && entry.isIntersecting) {
-      header && header.classList.add('hidden')
-      showHeader = false
-    } else {
-      header && header.classList.remove('hidden')
-      showHeader = true
-    }
-  });
+
+    entries.forEach(entry => {
+      if (entry.target === footer && entry.isIntersecting) {
+        header && header.classList.add('hidden')
+        showHeader = false
+      } else {
+        console.log(window.pageYOffset)
+        if(window.pageYOffset > 400)  {
+
+          header && header.classList.remove('hidden')
+          showHeader = true
+        }
+      }
+    });
 });
 
 footer && observer2.observe(footer);
