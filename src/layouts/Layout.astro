@@ -71,11 +71,10 @@ function localePath(path: string) {
     </div>
 
     <footer class=" bg-black  relative z-10 ">
-      <div class="flex w-full gap-2 justify-center">
-        <img src={batman} alt="batman" class="w-[23rem] max-w-screen p-4">
-        <img src={batman} alt="batman" class="w-[23rem] max-w-screen p-4 hidden md:block">
-        <img src={batman} alt="batman" class="w-[23rem] max-w-screen p-4  hidden xl:block">
-        <img src={batman} alt="batman" class="w-[25rem] max-w-screen p-4  hidden 2xl:block">
+      <div class="flex w-full gap-2 ml-2">
+        <img src={batman} alt="batman" class="w-[26rem] 2xl:w-[32rem] max-w-screen p-4">
+        <img src={batman} alt="batman" class="w-[26rem] 2xl:w-[32rem] max-w-screen p-4 hidden md:block">
+        <img src={batman} alt="batman" class="w-[26rem] 2xl:w-[32rem] max-w-screen p-4  hidden xl:block">
       </div>
       <hr class="border-white  px-6 mx-6 mt-3">
 
@@ -83,18 +82,14 @@ function localePath(path: string) {
         <div class="col-span-2">
           <p class="text-6xl monu">{footer.titulo[lenguaje]}</p>
           <div class="text-lg pt-12 prose text-white max-w-md font-Georgia">
-
             <PortableText
               value={footer.texto_largo[lenguaje]}
-              
             >
-
             </PortableText>
-            
           </div>
-          
         </div>
-        <div class="flex flex-col  justify-center col-span-2" id="contact">
+
+        <div class="flex flex-col mt-3 justify-center col-span-2" id="contact">
           <input type="text" placeholder="Name" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b max-w-[80vw]" >
           <input type="email" placeholder="Email" name="email" class="text-2xl p-1 m-3 bg-black border-white border-b max-w-[80vw]" >
           <input type="text" placeholder="Message" name="name" class="text-2xl p-1 m-3 bg-black border-white border-b max-w-[80vw]" >
@@ -108,18 +103,18 @@ function localePath(path: string) {
         </div>
       </div>
 
-      <div class="flex flex-col lg:flex-row justify-between  mt-12 items-center lg:items-end gap-12 lg:gap-32 text-white py-3 px-6 col-span-1">
-        <p class="text-3xl lg:text-4xl text-center"><span class="font-bold"> ©THE BRAND SIDE </span> - 2023</p>
-        <div class=" flex-col items-center hidden lg:flex">
+      <div class="flex flex-col lg:grid justify-between pb-6  mt-12 items-center lg:grid-cols-6 gap-12 lg:gap-32 text-white py-3 px-6 col-span-1">
+        <p class="text-3xl col-span-2 "><span class="font-bold"> ©THE BRAND SIDE </span> - 2023</p>
+        <div class="mt-5 col-span-2 flex-col items-center hidden lg:flex">
           <div class="flex">
-            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
-            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
-            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
-            <img src={flechaArriba} alt="" class="w-9 -rotate-90">
+            <img src={flechaArriba} alt="" class="w-7 -rotate-90">
+            <img src={flechaArriba} alt="" class="w-7 -rotate-90">
+            <img src={flechaArriba} alt="" class="w-7 -rotate-90">
+            <img src={flechaArriba} alt="" class="w-7 -rotate-90">
           </div>
-          <span class="font-Inter text-xl uppercase">this side up</span>
+          <span class="font-Inter text-lg uppercase">this side up</span>
         </div>
-        <div class="flex items-center gap-6">
+        <div class="col-span-2 flex items-center gap-6">
           <img src="https://d2kq0urxkarztv.cloudfront.net/593641fc4ac3e7290178b1b1/4074560/upload-cd7b5ba6-a308-4430-9ec9-2d0f16fe3d70.png?w=145&e=webp&nll=true" alt="logo" class="w-12 ">
 
           <div class="font-Inter lg:pr-32">
@@ -128,19 +123,25 @@ function localePath(path: string) {
             <p> Dorrego 1456 </p>
           </div>
 
-
         </div>
       </div>
     </footer>
 	</body>
 </html>
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
   @font-face {
     font-family: 'PPNeueMontreal';
     src: url('/fonts/PPNeueMontreal-Regular.woff') format('woff');
     font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'PPNeueMontreal';
+    src: url('/fonts/PPNeueMontreal-SemiBold.woff') format('woff');
+    font-weight: bold;
     font-style: normal;
     font-display: swap;
   }
@@ -165,8 +166,6 @@ function localePath(path: string) {
   .monu {
     font-family: 'PPNeueMontreal', sans-serif;
   }
-
-
 
 	:root {
 		--accent: 124, 58, 237;
