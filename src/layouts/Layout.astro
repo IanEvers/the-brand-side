@@ -35,8 +35,8 @@ function localePath(path: string) {
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-white w-full overflow-x-hidden ">
-		<header class="top-0 w-full h-20  border-black fixed z-30 bg-black text-white flex justify-between lg:justify-start lg:gap-2 items-center transition-all duration-300">
+	<body class="bg-white  overflow-x-hidden ">
+		<header class="top-0 w-screen h-20  border-black fixed z-30 bg-black text-white flex justify-between lg:justify-start lg:gap-2 items-center transition-all duration-300">
       <a href={localePath("/")} class="hidden lg:flex  ">
         <span class=" uppercase lg:text-7xl mb-16 xl:mb-20  xl:text-9xl font-bold leading-none ml-3 lg:ml-12 "> the brand side </span>
         <nav class="text-md hidden lg:flex lg:flex-col gap-2 lg:gap-0.5 justify-center px-3 sm:mr-20 lg:mr-32">
@@ -71,9 +71,9 @@ function localePath(path: string) {
     </div>
 
     <footer class=" bg-black  relative z-10 ">
-      <div class="flex w-full gap-2 ml-2">
+      <div class="flex w-screen gap-2 pl-2">
         <img src={batman} alt="batman" class="w-[26rem] 2xl:w-[32rem] max-w-screen p-4">
-        <img src={batman} alt="batman" class="w-[26rem] 2xl:w-[32rem] max-w-screen p-4 hidden md:block">
+        <img src={batman} alt="batman" class="w-[26rem] 2xl:w-[32rem] max-w-screen p-4 hidden lg:block">
         <img src={batman} alt="batman" class="w-[26rem] 2xl:w-[32rem] max-w-screen p-4  hidden xl:block">
       </div>
       <hr class="border-white  px-6 mx-6 mt-3">
